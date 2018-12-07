@@ -23,6 +23,14 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'xuyuanp/nerdtree-git-plugin'
+
+Plug 'troydm/zoomwintab.vim'  
+Plug 'cohama/lexima.vim'                                                        " Auto cerrar (, {
+Plug 'alvan/vim-closetag'                                                       " Auto cerrar html
+Plug 'terryma/vim-multiple-cursors'
+
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript.jsx'] }
+
 "Plug 'lifepillar/vim-solarized8'
 "Plug 'iCyMind/NeoSolarized'
 
@@ -130,6 +138,8 @@ let g:echodoc_enable_at_startup = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"=================================
+
 "=================================
 " Nombre del archivo generado
 let g:gutentags_ctags_tagfile = '.tags'

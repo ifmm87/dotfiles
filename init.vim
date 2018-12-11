@@ -35,8 +35,7 @@ Plug 'tomtom/tcomment_vim'                                                      
 Plug 'inkarkat/vim-SyntaxRange'
 Plug 'scrooloose/syntastic'
 Plug 'othree/html5.vim'
-"Plug 'lifepillar/vim-solarized8'
-"Plug 'iCyMind/NeoSolarized'
+Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 "=============================================================
@@ -66,6 +65,7 @@ set noswapfile
 set nobackup
 set nowb
 set smartindent
+colorscheme codedark
 autocmd Filetype javascript set softtabstop=2
 autocmd Filetype javascript set sw=2
 autocmd Filetype javascript set ts=2
@@ -155,7 +155,7 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 
 "=================================
-
+let g:airline_theme = 'codedark'
 "=================================
 " Nombre del archivo generado
 let g:gutentags_ctags_tagfile = '.tags'
@@ -165,7 +165,7 @@ let g:fzf_commands_expect = 'alt-enter'
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Empezar a buscar presionando Ctrl + p
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles<CR>
 " Maps requeridos
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)

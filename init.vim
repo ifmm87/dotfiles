@@ -36,6 +36,11 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'othree/html5.vim'
 Plug 'crusoexia/vim-monokai'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plug 'google/vim-glaive'
 call plug#end()
 "=============================================================
 
@@ -175,7 +180,7 @@ let g:fzf_commands_expect = 'alt-enter'
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Empezar a buscar presionando Ctrl + p
-map <c-p> :Files<CR>
+map <c-p> :GFiles<CR>
 nnoremap <Leader>bb :Buffers<CR>
 nnoremap <Leader>bt :BTags<CR>
 nnoremap <Leader>bh :History<CR>
@@ -324,6 +329,6 @@ endfunction
 "para la indentacion
 map <leader>i gg=G <CR>
 "para coregir espacios
-map <leader>I :call Fix_spacing()<CR>
+map <leader>I :FormatCode prettier<CR>
 "===============transparency============================
 hi Normal guibg=NONE ctermbg=NONE

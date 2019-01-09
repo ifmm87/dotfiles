@@ -1,13 +1,10 @@
 "=======================PLUGINS=================================
-"==================,=============================================
 let g:mapleader = " "
 syntax enable
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set t_Co=256
 " Directorio de plugins
 call plug#begin('~/.local/share/nvim/plugged')
-
-" Aquí irán los plugins a instalar
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
@@ -36,15 +33,18 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'othree/html5.vim'
 Plug 'crusoexia/vim-monokai'
+"Plug 'tomasiser/vim-code-dark'
+"Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
+Plug 'google/vim-codefmt' " Also add Glaive, which is used to configure codefmt's maktaba flags. See  `:help :Glaive` for usage.
 Plug 'google/vim-glaive'
+Plug 'Valloric/MatchTagAlways'
+Plug 'Shougo/neosnippet'
 call plug#end()
-"=============================================================
+"=======================================================================
 
-"=================================GENERAL===============$=======
+"=================================GENERAL SETTINGS======================
 set title
 set number
 set relativenumber                                                              "Show numbers relative to current line
@@ -71,66 +71,114 @@ set noswapfile
 set nobackup
 set nowb
 set smartindent
+set background=dark  " Fondo del tema: dark/light
+if (has("termguicolors"))
+ set termguicolors
+endif
+" Theme
+syntax enable
+colorscheme gruvbox
 autocmd Filetype javascript set softtabstop=2
 autocmd Filetype javascript set sw=2
 autocmd Filetype javascript set ts=2
-"==============LEADER==========================
+"==================================================================
+
+"=========================LEADER MAPPINGS==========================
 nnoremap <leader>s :w<CR>
 nnoremap <leader>e :e $MYVIMRC<CR>  " Abrir el archivo init.vim con <líder> + e
-
 " Usar <líder> + y para copiar al portapapeles
 vnoremap <leader>y "+y
 nnoremap <leader>y "+y
-
 " Usar <líder> + d para cortar al portapapeles
 vnoremap <leader>d "+d
 nnoremap <leader>d "+d
-
 " Usar <íder> + p para pegar desde el portapapeles
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>P "+P
-
 " Moverse al buffer siguiente con <líder> + l
 map <leader>l :bnext<CR>
-
 " Moverse al buffer anterior con <líder> + j
 nnoremap <leader>h :bprevious<CR>
-
 " Cerrar el buffer actual con <líder> + q
 nnoremap <leader>q :bdelete<CR>
 nnoremap <leader>o :new<CR>
 nnoremap <leader>vo :vnew<CR>
-
-"=============MAPPINGS==========================
-"Especificos
-"map <C-y> :w <CR> no funciona C-s problema con el mapping del SO
+" Guardar con leader en normal mode
+nnoremap <Leader>s :w<CR>
+" Open vertical split
+nnoremap <Leader>& :vsp<CR>
+nnoremap <Leader>" :sp<CR>
+nnoremap <Leader>bb :Buffers<CR>
+nnoremap <Leader>bt :BTags<CR>
+nnoremap <Leader>bh :History<CR>
+" Reload init.vim
+noremap <Leader>r :so %<CR>
+nnoremap <leader>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+nnoremap <leader>f :ZoomWinTabToggle<CR>
+map <leader>t :tabnew<CR>
+" highlight jumping
+nnoremap <leader>% :MtaJumpToOtherTag<cr>
+" Clear search highlight
+nnoremap <Leader><space> :noh<CR>
+" Nerdtree
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>N :NERDTreeFind<CR>
+"para la indentacion
+map <leader>i gg=G <CR>
+"para coregir espacios
+map <leader>I :FormatCode prettier<CR>
+" Generate tags
+nnoremap <Leader>gt :sp term://ctags -R --exclude=node_modules .<CR>
+" Mostrar los mensajes de error
+nnoremap <Leader>e :lopen<CR>
+nnoremap <Leader>q :lclose<CR>
+" Corregir errores de ALEFix
+nnoremap <Leader>he :ALEFix<CR>
+"==========CONTROL===MAPPINGS====================================
 " Map save to Ctrl + S
 map <c-s> :w<CR>
 imap <c-s> <C-o>:w<CR>
-nnoremap <Leader>s :w<CR>
-" zoom buffer
-" Open vertical split
-nnoremap <Leader>% :vsp<CR>
-nnoremap <Leader>" :sp<CR>
-
-" Maps for indentation in normal mode
-nnoremap <tab> >>
-nnoremap <s-tab> <<
-
 " Indenting in visual mode
 xnoremap <s-tab> <gv
 xnoremap <tab> >gv
+" // The switch of the Source Explorer 
+"nmap <F3> :SrcExplToggle<CR> 
+" Maps for indentation in normal mode
+nnoremap <tab> >>
+nnoremap <s-tab> <<
+"search file
+map <c-p> :Files<CR>
+" Maps requeridos
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+" Resize window with shift + and shift -
+nnoremap + <c-w>5>
+nnoremap - <c-w>5<
+"tab navigation
+map <A-left> :tabp<CR>
+map <A-right> :tabn<CR>
+"==================lint=========================
+nnoremap <F4> :!npm run lint<CR>
+nnoremap <F5> :!npm run lint -- --fix<CR>
+" Move selected lines up and down
+vnoremap <A-k> :m '>+1<CR>gv=gv
+vnoremap <A-j>  :m '<-2<CR>gv=gv
+"buscador
+map <c-f> :Ag<CR>
+"navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-"============================PLUGIN SETTINGS==================
-set background=dark  " Fondo del tema: dark/light
-colorscheme monokai 
-"===============================================================
+"=================================================================================
+"=================================================================================
+"=================================================================================
+"=================================================================================
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
 
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>N :NERDTreeFind<CR>
 let g:NERDTreeIgnore = [
 			\ '\.pyc$', '^__pycache__$', '^venv$',
 			\ '^tags$', 'node_modules', '\.o$'
@@ -138,7 +186,6 @@ let g:NERDTreeIgnore = [
 
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
 let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
-
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
 set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
@@ -171,6 +218,8 @@ let g:ale_lint_on_save = 1                                                      
 let g:ale_sign_error = '✖'                                                      "Lint error sign
 let g:ale_sign_warning = '⚠'                                                    "Lint warning sign
 let g:ale_statusline_format =[' %d E ', ' %d W ', '']  
+let g:ale_set_highlights = 1
+":highlight ALEError ctermbg=none cterm=underline
 "=================================
 " Nombre del archivo generado
 let g:gutentags_ctags_tagfile = '.tags'
@@ -180,19 +229,11 @@ let g:fzf_commands_expect = 'alt-enter'
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Empezar a buscar presionando Ctrl + p
-map <c-p> :GFiles<CR>
-nnoremap <Leader>bb :Buffers<CR>
-nnoremap <Leader>bt :BTags<CR>
-nnoremap <Leader>bh :History<CR>
-" Maps requeridos
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-
 " Quitar resaltado luego de buscar
 let g:incsearch#auto_nohlsearch = 1
 let g:NERDSpaceDelims = 1  " Agregar un espacio después del delimitador del comentario
 let g:NERDTrimTrailingWhitespace = 1  " Quitar espacios al quitar comentario
-" Actualizar barra cada 250 mili segundos
+" Actualizar b7arra cada 250 mili segundos
 set updatetime=250
 "=======================================
 let g:javascript_plugin_flow = 1
@@ -200,20 +241,10 @@ let g:javascript_plugin_flow = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-nnoremap <leader>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
-"=====================================================
-nnoremap <leader>f :ZoomWinTabToggle<CR>
-"====================================================
-map <leader>t :tabnew<CR>
-map <A-left> :tabp<CR>
-map <A-right> :tabn<CR>
-" ================ Functions ======================== {{{
-" Creando nuevo tipo de archivo para una extension vue
 " autocmd BufRead,BufNewFile *.vue set filetype=vue                               " .config/nvim/syntax/vue/Syntax.Include.vim
 autocmd BufRead,BufNewFile *.vue set filetype=html
 
@@ -229,7 +260,7 @@ call NERDTreeHighlightFile('md', 'LightCyan')
 let g:NERDTreeChDirMode = 0                                                     "Always change the root directory
 let g:NERDTreeMinimalUI = 1                                                     "Disable help text and bookmark title
 let g:NERDTreeShowHidden = 1                                                    "Show hidden files in NERDTree
-
+"=============================================
 let g:WebDevIcons_conceal_nerdtree_brackets = 0                                 "Eliminando el padding izquierdo
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
@@ -238,10 +269,8 @@ let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
 let g:deoplete#enable_at_startup = 1                                            "Enable deoplete autocompletion
 let g:deoplete#file#enable_buffer_path = 1                                      "Autocomplete files relative to current buffer
 let g:deoplete#tag#cache_limit_size = 10000000 
-" Resize window with shift + and shift -
-nnoremap + <c-w>5>
-nnoremap - <c-w>5<
-"=================================
+
+"=======================================================
 set wildmode=list:full
 set wildignore=*.o,*.obj,*~                                                     "stuff to ignore when tab completing
 set wildignore+=*.git*
@@ -256,7 +285,7 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
-" ================ Statusline ======================== {{{
+" ================ Statusline ========================
 set statusline=\ %{toupper(mode())}                                             "Mode
 set statusline+=\ \│\ %4F                                                       "File path
 set statusline+=\ %1*%m%*                                                       "Modified indicator
@@ -269,66 +298,32 @@ set statusline+=\ \│\ %y                                                      
 set statusline+=\ \│\ %p%%                                                      "Percentage
 set statusline+=\ \│\ %l/%L                                                     "Current line number/Total line numbers
 set statusline+=\ \│\ %c                                                        "Column number
-set statusline+=\ \│%1*%{ALEGetStatusLine()}%*                                  "Errors count
-"==================clear search highlighting==========
-" Clear search highlight
-nnoremap <Leader><space> :noh<CR>
+"set statusline+=\ \│%0*%{ALEGetStatusLine()}%*                                  "Errors count
 "===================nerdtree==========================
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
-
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
-
 " Set a language to use its alternate delimiters by default
 let g:NERDAltDelims_java = 1
-
 " Add your own custom formats or override the defaults
 "let g:NERDCustomDelimiters = { 'c': { 'left': '/*','right': '*/' } }
-
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
-
-" Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
-"====================reload config==================
-" Reload init.vim
-noremap <Leader>r :so %<CR>
-"==================lint=========================
-" Buscar tareas pendientes
-nnoremap <F4> :!npm run lint<CR>
-nnoremap <F5> :!npm run lint -- --fix<CR>
-"================================================
-" Move selected lines up and down
-vnoremap <A-Down> :m '>+1<CR>gv=gv
-vnoremap <A-Up>  :m '<-2<CR>gv=gv
-"=================buscador===============================
-map <c-f> :Ag<CR>
-"===============fix spacing============================
-function! Fix_spacing()
-    %s/\<\(if\|for\|while\|switch\)(\s*/\1 (/ge     " if (
-    %s/\<\(else\){/\1 {/ge                          " else {
-    %s/}\(else\)/} \1/ge                            " } else
-    %s/ *){ */) {/ge                                " ) {
-    %s/\((\) \(\S\)/\1\2/ge                         " no space after (
-    %s/\n\n\n\+/\r\r/ge                             " single empty line
-    %s/\([,;=:<>!|]\)\(\S\)/\1 \2/ge                " space after ,;
-    %s/\([=<>!|]\)\(\S\)/ \1/ge            " space before ,;
-    %s/\(\S\) \([,;:)]\)/\1\2/ge                     " no space before ,;)
-    %s/\s*$//ge                                     " no terminal space
-    %s/^\([^ ^\t].*\){/\1\r{/ge                     " { on new line for functions
-    :%s/\v(\w) ?(\+|-|\*/|\>\=|\<\=|!\=|\=) ?(\w|-)/\1 \2 \3/g	
 
-endfunction
-"para la indentacion
-map <leader>i gg=G <CR>
-"para coregir espacios
-map <leader>I :FormatCode prettier<CR>
-"===============transparency============================
-hi Normal guibg=NONE ctermbg=NONE
+" // Set the height of Source Explorer window 
+"=============================================
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \}
+"============transparency=========================
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE

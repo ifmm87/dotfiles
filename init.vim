@@ -1,8 +1,5 @@
 "=======================PLUGINS=================================
 let g:mapleader = " "
-syntax enable
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set t_Co=256
 " Directorio de plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
@@ -32,8 +29,8 @@ Plug 'inkarkat/vim-SyntaxRange'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'othree/html5.vim'
-Plug 'crusoexia/vim-monokai'
-"Plug 'tomasiser/vim-code-dark'
+"Plug 'crusoexia/vim-monokai'
+Plug 'tomasiser/vim-code-dark'
 "Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 Plug 'google/vim-maktaba'
@@ -77,7 +74,7 @@ if (has("termguicolors"))
 endif
 " Theme
 syntax enable
-colorscheme gruvbox
+colorscheme codedark
 autocmd Filetype javascript set softtabstop=2
 autocmd Filetype javascript set sw=2
 autocmd Filetype javascript set ts=2
@@ -327,3 +324,4 @@ let g:mta_filetypes = {
 "============transparency=========================
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
+hi! EndOfBuffer ctermfg=NONE guibg=NONE

@@ -123,7 +123,7 @@ nnoremap <Leader><space> :noh<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>N :NERDTreeFind<CR>
 "para la indentacion
-map <leader>i gg=G <CR>
+map <leader>i gg=G'' <CR>
 "para coregir espacios
 map <leader>I :FormatCode prettier<CR>
 " Generate tags

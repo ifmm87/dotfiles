@@ -1,0 +1,253 @@
+Jan 20 15:20 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 15:20 : exception: Failed to open '/home/ivan/.config/mpd/state': No such file or directory
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/03-AOV.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/13-The Negative One.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/04-The Devil In I.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/01-XIX.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/06-Skeptic.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/12-Be Prepared For Hell.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/07-Lech.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/11-Custer.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/09-Nomadic.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/10-The One That Kills The Least.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/02-Sarcastrophe.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/08-Goodbye.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/14-If Rain Is What You Want.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 2/05--Funny-.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 2/02-The Burden.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 2/04--Talk-.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 2/01-Override.mp3
+Jan 20 15:20 : update: added Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 2/03--Silent-.mp3
+Jan 20 15:20 : avahi: Service 'Music Player @ ivan-pc' successfully established.
+Jan 20 15:22 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 15:22 : avahi: Service 'Music Player @ ivan-pc' successfully established.
+Jan 20 15:22 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 15:22 : avahi: Service 'Music Player @ ivan-pc' successfully established.
+Jan 20 15:28 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 15:28 : avahi: Service 'Music Player @ ivan-pc' successfully established.
+Jan 20 16:06 : client: [0] opened from 127.0.0.1:35240
+Jan 20 16:09 : client: [0] closed
+Jan 20 16:21 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 16:21 : avahi: Service 'Music Player @ ivan-pc' successfully established.
+Jan 20 16:21 : client: [0] opened from 127.0.0.1:48638
+Jan 20 16:30 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 16:30 : exception: Failed to enable output "pulse audio" (pulse)
+Jan 20 16:30 : exception: nested: pa_context_connect() has failed: Connection refused
+Jan 20 16:30 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 16:30 : exception: Failed to enable output "pulse audio" (pulse)
+Jan 20 16:30 : exception: nested: pa_context_connect() has failed: Connection refused
+Jan 20 16:30 : exception: Failed to enable output "pulse audio" (pulse)
+Jan 20 16:30 : exception: nested: pa_context_connect() has failed: Connection refused
+Jan 20 16:30 : exception: Failed to enable output "pulse audio" (pulse)
+Jan 20 16:30 : exception: nested: pa_context_connect() has failed: Connection refused
+Jan 20 16:30 : exception: Failed to enable output "pulse audio" (pulse)
+Jan 20 16:30 : exception: nested: pa_context_connect() has failed: Connection refused
+Jan 20 16:30 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3"
+Jan 20 16:30 : exception: Not playing
+Jan 20 16:30 : exception: Not playing
+Jan 20 16:30 : exception: Not playing
+Jan 20 16:30 : exception: Not playing
+Jan 20 16:31 : exception: Failed to enable output "pulse audio" (pulse)
+Jan 20 16:31 : exception: nested: pa_context_connect() has failed: Connection refused
+Jan 20 16:35 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/07-Lech.mp3"
+Jan 20 16:36 : client: [1] opened from 127.0.0.1:49030
+Jan 20 16:38 : client: [1] closed
+Jan 20 16:39 : exception: Failed to enable output "pulse audio" (pulse)
+Jan 20 16:39 : exception: nested: pa_context_connect() has failed: Connection refused
+Jan 20 16:39 : client: [0] closed
+Jan 20 16:43 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/08-Goodbye.mp3"
+Jan 20 16:47 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 16:47 : avahi: Service 'Music Player @ ivan-pc' successfully established.
+Jan 20 16:47 : client: [0] opened from 127.0.0.1:49354
+Jan 20 16:47 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 16:47 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 16:50 : client: [0] closed
+Jan 20 16:50 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/08-Goodbye.mp3"
+Jan 20 16:52 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 16:52 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 16:52 : avahi: Service 'Music Player @ ivan-pc' successfully established.
+Jan 20 16:54 : client: [0] opened from 127.0.0.1:49428
+Jan 20 16:54 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 16:58 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3"
+Jan 20 17:00 : exception: Failed to open audio output
+Jan 20 17:01 : client: [0] closed
+Jan 20 17:04 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3"
+Jan 20 17:06 : client: [1] opened from 127.0.0.1:49586
+Jan 20 17:09 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/01-XIX.mp3"
+Jan 20 17:13 : client: [2] opened from 127.0.0.1:49622
+Jan 20 17:14 : client: [1] closed
+Jan 20 17:16 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3"
+Jan 20 17:17 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 17:17 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 17:17 : client: [0] opened from 127.0.0.1:49646
+Jan 20 17:17 : avahi: Service 'Music Player @ ivan-pc' successfully established.
+Jan 20 17:24 : client: [1] opened from 127.0.0.1:49738
+Jan 20 17:32 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/01-XIX.mp3"
+Jan 20 17:32 : client: [1] closed
+Jan 20 17:32 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/02-Sarcastrophe.mp3"
+Jan 20 17:32 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 17:32 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 17:32 : avahi: Service 'Music Player @ ivan-pc' successfully established.
+Jan 20 17:32 : client: [0] opened from 127.0.0.1:34810
+Jan 20 17:32 : client: [1] opened from 127.0.0.1:34820
+Jan 20 17:33 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jan 20 17:35 : client: [0] closed
+Jan 20 17:35 : client: [2] opened from 127.0.0.1:34828
+Jan 20 17:38 : client: [2] closed
+Jan 20 17:38 : client: [3] opened from 127.0.0.1:34918
+Jan 20 17:39 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/01-XIX.mp3"
+Jan 20 17:39 : client: [3] closed
+Jan 20 17:43 : client: [4] opened from 127.0.0.1:34926
+Jan 20 18:07 : client: [4] closed
+Jan 20 18:07 : client: [5] opened from 127.0.0.1:35330
+Jan 20 18:07 : client: [6] opened from 127.0.0.1:35332
+Jan 20 18:07 : client: [6] closed
+Jan 20 18:13 : client: [5] closed
+Jan 20 18:13 : client: [7] opened from 127.0.0.1:35350
+Jan 20 18:17 : client: [7] closed
+Jan 20 18:17 : client: [8] opened from 127.0.0.1:35354
+Jan 20 18:18 : client: [8] closed
+Jan 20 18:18 : client: [9] opened from 127.0.0.1:35360
+Jan 20 18:18 : client: [9] closed
+Jan 20 18:18 : client: [10] opened from 127.0.0.1:35362
+Jan 20 18:20 : client: [10] closed
+Jan 20 18:20 : client: [11] opened from 127.0.0.1:35364
+Jan 20 18:20 : client: [11] closed
+Jan 20 18:20 : client: [12] opened from 127.0.0.1:35366
+Jan 20 18:21 : client: [12] closed
+Jan 20 18:21 : client: [13] opened from 127.0.0.1:35368
+Jan 20 18:25 : client: [13] closed
+Jan 20 18:25 : client: [14] opened from 127.0.0.1:35384
+Jan 20 18:25 : client: [15] opened from 127.0.0.1:35386
+Jan 20 18:25 : client: [15] closed
+Jan 20 18:25 : client: [16] opened from 127.0.0.1:35388
+Jan 20 18:25 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/02-Sarcastrophe.mp3"
+Jan 20 18:25 : client: [16] closed
+Jan 20 18:25 : client: [17] opened from 127.0.0.1:35390
+Jan 20 18:25 : client: [17] closed
+Jan 20 18:25 : client: [18] opened from 127.0.0.1:35392
+Jan 20 18:25 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/02-Sarcastrophe.mp3"
+Jan 20 18:25 : client: [18] closed
+Jan 20 18:26 : client: [14] closed
+Jan 20 18:26 : client: [19] opened from 127.0.0.1:35396
+Jan 20 18:26 : client: [20] opened from 127.0.0.1:35398
+Jan 20 18:26 : client: [20] closed
+Jan 20 18:26 : client: [21] opened from 127.0.0.1:35400
+Jan 20 18:26 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/02-Sarcastrophe.mp3"
+Jan 20 18:26 : client: [21] closed
+Jan 20 18:27 : client: [19] closed
+Jan 20 18:27 : client: [22] opened from 127.0.0.1:35402
+Jan 20 18:27 : client: [23] opened from 127.0.0.1:35404
+Jan 20 18:27 : client: [23] closed
+Jan 20 18:31 : client: [22] closed
+Jan 20 18:31 : client: [24] opened from 127.0.0.1:35412
+Jan 20 18:36 : client: [24] closed
+Jan 20 18:36 : client: [25] opened from 127.0.0.1:35422
+Jan 20 18:36 : client: [26] opened from 127.0.0.1:35424
+Jan 20 18:36 : client: [26] closed
+Jan 20 18:36 : client: [27] opened from 127.0.0.1:35438
+Jan 20 18:36 : client: [27] closed
+Jan 20 18:36 : client: [28] opened from 127.0.0.1:35440
+Jan 20 18:36 : client: [28] closed
+Jan 20 18:37 : client: [29] opened from 127.0.0.1:35444
+Jan 20 18:37 : client: [29] closed
+Jan 20 18:39 : client: [25] closed
+Jan 20 18:39 : client: [30] opened from 127.0.0.1:35452
+Jan 20 18:39 : client: [31] opened from 127.0.0.1:35454
+Jan 20 18:39 : client: [31] closed
+Jan 20 18:39 : client: [32] opened from 127.0.0.1:35456
+Jan 20 18:39 : client: [32] closed
+Jan 20 18:41 : client: [30] closed
+Jan 20 18:41 : client: [33] opened from 127.0.0.1:35462
+Jan 20 18:41 : client: [33] closed
+Jan 20 18:41 : client: [34] opened from 127.0.0.1:35464
+Jan 20 18:43 : client: [34] closed
+Jan 20 18:43 : client: [35] opened from 127.0.0.1:35470
+Jan 20 18:45 : client: [36] opened from 127.0.0.1:35474
+Jan 20 18:45 : client: [36] closed
+Jan 20 18:45 : client: [37] opened from 127.0.0.1:35476
+Jan 20 18:45 : client: [37] closed
+Jan 20 18:45 : client: [38] opened from 127.0.0.1:35478
+Jan 20 18:45 : client: [38] closed
+Jan 20 18:45 : client: [39] opened from 127.0.0.1:35480
+Jan 20 18:45 : client: [39] closed
+Jan 20 18:45 : client: [40] opened from 127.0.0.1:35482
+Jan 20 18:45 : client: [40] closed
+Jan 20 18:45 : client: [41] opened from 127.0.0.1:35484
+Jan 20 18:45 : client: [41] closed
+Jan 20 18:45 : client: [42] opened from 127.0.0.1:35486
+Jan 20 18:45 : client: [42] closed
+Jan 20 18:47 : client: [35] closed
+Jan 20 18:47 : client: [43] opened from 127.0.0.1:35494
+Jan 20 18:48 : client: [43] closed
+Jan 20 18:48 : client: [44] opened from 127.0.0.1:35496
+Jan 20 18:50 : client: [44] closed
+Jan 20 18:50 : client: [45] opened from 127.0.0.1:35498
+Jan 20 18:50 : client: [46] opened from 127.0.0.1:35500
+Jan 20 18:50 : client: [46] closed
+Jan 20 18:50 : client: [47] opened from 127.0.0.1:35502
+Jan 20 18:50 : client: [47] closed
+Jan 20 18:52 : client: [45] closed
+Jan 20 18:52 : client: [48] opened from 127.0.0.1:35518
+Jan 20 18:52 : client: [49] opened from 127.0.0.1:35520
+Jan 20 18:52 : client: [49] closed
+Jan 20 18:52 : client: [50] opened from 127.0.0.1:35522
+Jan 20 18:52 : client: [50] closed
+Jan 20 18:53 : client: [48] closed
+Jan 20 18:54 : client: [51] opened from 127.0.0.1:35530
+Jan 20 18:54 : client: [51] closed
+Jan 20 18:54 : client: [52] opened from 127.0.0.1:35532
+Jan 20 18:56 : client: [52] closed
+Jan 20 18:56 : client: [53] opened from 127.0.0.1:35536
+Jan 20 18:56 : client: [54] opened from 127.0.0.1:35538
+Jan 20 18:56 : client: [54] closed
+Jan 20 18:57 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3"
+Jan 20 19:05 : client: [53] closed
+Jan 20 19:05 : client: [55] opened from 127.0.0.1:35570
+Jan 20 19:06 : client: [55] closed
+Jan 20 19:06 : client: [56] opened from 127.0.0.1:35574
+Jan 20 19:08 : client: [56] closed
+Jan 20 19:08 : client: [57] opened from 127.0.0.1:35596
+Jan 20 19:08 : client: [57] closed
+Jan 20 19:08 : client: [58] opened from 127.0.0.1:35602
+Jan 20 19:14 : client: [58] closed
+Jan 20 19:14 : client: [59] opened from 127.0.0.1:35610
+Jan 20 19:14 : client: [59] closed
+Jan 20 19:14 : client: [60] opened from 127.0.0.1:35618
+Jan 20 19:18 : client: [60] closed
+Jan 20 19:18 : client: [61] opened from 127.0.0.1:35626
+Jan 20 19:19 : client: [61] closed
+Jan 20 19:19 : client: [62] opened from 127.0.0.1:35628
+Jan 20 19:20 : client: [62] closed
+Jan 20 19:20 : client: [63] opened from 127.0.0.1:35630
+Jan 20 19:20 : client: [63] closed
+Jan 20 19:20 : client: [64] opened from 127.0.0.1:35632
+Jan 20 19:20 : client: [64] closed
+Jan 20 19:20 : client: [65] opened from 127.0.0.1:35634
+Jan 20 19:28 : client: [65] closed
+Jan 20 19:28 : client: [66] opened from 127.0.0.1:35978
+Jan 20 19:28 : client: [66] closed
+Jan 20 19:28 : client: [67] opened from 127.0.0.1:36010
+Jan 20 19:29 : client: [67] closed
+Jan 20 19:29 : client: [68] opened from 127.0.0.1:36020
+Jan 20 19:46 : client: [69] opened from 127.0.0.1:36500
+Jan 20 19:46 : client: [69] closed
+Jan 20 19:46 : client: [70] opened from 127.0.0.1:36502
+Jan 20 19:46 : client: [70] closed
+Jan 20 19:49 : client: [68] closed
+Jan 20 19:49 : client: [71] opened from 127.0.0.1:36566
+Jan 20 20:18 : client: [72] opened from 127.0.0.1:37642
+Jan 20 20:18 : client: [72] closed
+Jan 20 20:18 : client: [73] opened from 127.0.0.1:37644
+Jan 20 20:18 : client: [73] closed
+Jan 20 20:18 : client: [74] opened from 127.0.0.1:37648
+Jan 20 20:20 : client: [74] closed
+Jan 20 20:20 : client: [75] opened from 127.0.0.1:37726
+Jan 20 20:20 : client: [76] opened from 127.0.0.1:37732
+Jan 20 20:21 : client: [1] closed
+Jan 20 20:22 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3"
+Jan 20 20:26 : client: [77] opened from 127.0.0.1:37910
+Jan 20 20:26 : client: [77] closed
+Jan 20 20:34 : client: [71] closed
+Jan 20 20:34 : client: [78] opened from 127.0.0.1:38232

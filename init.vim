@@ -128,9 +128,7 @@ map <leader>i gg=G'' <CR>
 map <leader>I :FormatCode prettier<CR>
 " Generate tags
 nnoremap <Leader>gt :sp term://ctags -R --exclude=node_modules .<CR>
-" Mostrar los mensajes de error
-nnoremap <Leader>e :lopen<CR>
-nnoremap <Leader>q :lclose<CR>
+
 " Corregir errores de ALEFix
 nnoremap <Leader>he :ALEFix<CR>
 "==========CONTROL===MAPPINGS====================================
@@ -160,8 +158,8 @@ map <A-right> :tabn<CR>
 nnoremap <F4> :!npm run lint<CR>
 nnoremap <F5> :!npm run lint -- --fix<CR>
 " Move selected lines up and down
-vnoremap <A-k> :m '>+1<CR>gv=gv
-vnoremap <A-j>  :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 "buscador
 map <c-f> :Ag<CR>
 "navigation

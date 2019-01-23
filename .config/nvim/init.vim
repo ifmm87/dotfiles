@@ -39,6 +39,7 @@ Plug 'google/vim-glaive'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'majutsushi/tagbar'
 call plug#end()
 "=======================================================================
 
@@ -121,8 +122,8 @@ nnoremap <leader>% :MtaJumpToOtherTag<cr>
 " Clear search highlight
 nnoremap <Leader><space> :noh<CR>
 " Nerdtree
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>N :NERDTreeFind<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <F3> :NERDTreeFind<CR>
 "para la indentacion
 map <leader>i gg=G'' <CR>
 "para coregir espacios
@@ -168,7 +169,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
+nmap <F8> :TagbarToggle<CR>
 "=================================================================================
 "=================================================================================
 "=================================================================================

@@ -37,7 +37,8 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt' " Also add Glaive, which is used to configure codefmt's maktaba flags. See  `:help :Glaive` for usage.
 Plug 'google/vim-glaive'
 Plug 'Valloric/MatchTagAlways'
-Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 call plug#end()
 "=======================================================================
 
@@ -130,7 +131,7 @@ map <leader>I :FormatCode prettier<CR>
 nnoremap <Leader>gt :sp term://ctags -R --exclude=node_modules .<CR>
 
 " Corregir errores de ALEFix
-nnoremap <Leader>he :ALEFix<CR>
+nnoremap <Leader>fe :ALEFix<CR>
 "==========CONTROL===MAPPINGS====================================
 " Map save to Ctrl + S
 map <c-s> :w<CR>
@@ -319,6 +320,30 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'jinja' : 1,
     \}
+"======================================================
+" Autocompletado para neosnippet
+"let g:deoplete#enable_at_startup = 1
+"let g:neosnippet#disable_runtime_snippets = {'_' : 1} 
+let g:neosnippet#snippets_directory = ['~/.config/nvim/snippets'] 
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-space>     <Plug>(neosnippet_expand_or_jump)
+smap <C-space>     <Plug>(neosnippet_expand_or_jump)
+xmap <c-space>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 "============transparency=========================
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE

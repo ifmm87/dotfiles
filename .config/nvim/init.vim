@@ -7,7 +7,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-syntax'  " Fuente general de auto completado
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'Shougo/echodoc.vim'
 Plug 'w0rp/ale', { 'do': 'npm install -g prettier' }
 Plug 'sheerun/vim-polyglot'
@@ -27,12 +27,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript.jsx'] }
 Plug 'inkarkat/vim-SyntaxRange'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'othree/html5.vim'
-"Plug 'crusoexia/vim-monokai'
 Plug 'tomasiser/vim-code-dark'
-"Plug 'mhartington/oceanic-next'
-Plug 'morhetz/gruvbox'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt' " Also add Glaive, which is used to configure codefmt's maktaba flags. See  `:help :Glaive` for usage.
 Plug 'google/vim-glaive'
@@ -40,7 +37,11 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'majutsushi/tagbar'
+Plug 'severin-lemaignan/vim-minimap'
+Plug 'tpope/vim-fugitive'
+Plug 'zivyangll/git-blame.vim'
 call plug#end()
+
 "=======================================================================
 
 "=================================GENERAL SETTINGS======================
@@ -133,6 +134,9 @@ nnoremap <Leader>gt :sp term://ctags -R --exclude=node_modules .<CR>
 
 " Corregir errores de ALEFix
 nnoremap <Leader>fe :ALEFix<CR>
+nmap <silent> <leader>fk :ALENext<cr>
+nmap <silent> <leader>fj :ALEPrevious<cr>
+nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
 "==========CONTROL===MAPPINGS====================================
 " Map save to Ctrl + S
 map <c-s> :w<CR>
@@ -174,6 +178,13 @@ nmap <F8> :TagbarToggle<CR>
 "=================================================================================
 "=================================================================================
 "=================================================================================
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_next_key            = '<C-m>'
+let g:multi_cursor_skip_key            = '<C-M>'
+
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
 
 let g:NERDTreeIgnore = [
@@ -210,13 +221,28 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 0
 let g:ale_linters = {'javascript': ['eslint']}                                  "Lint js with eslint
 let g:ale_fixers = {'javascript': ['prettier', 'eslint']}                       "Fix eslint errors
+"/let g:ale_open_list = 1
 let g:ale_javascript_prettier_options = '--print-width 100'                     "Set max width to 100 chars for prettier
 let g:ale_lint_on_save = 1                                                      "Lint when saving a file
 let g:ale_sign_error = '✖'                                                      "Lint error sign
 let g:ale_sign_warning = '⚠'                                                    "Lint warning sign
 let g:ale_statusline_format =[' %d E ', ' %d W ', '']  
 let g:ale_set_highlights = 1
-":highlight ALEError ctermbg=none cterm=underline
+highlight ALEError ctermbg=DarkMagenta cterm=underline
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline=%{LinterStatus()}
 "=================================
 " Nombre del archivo generado
 let g:gutentags_ctags_tagfile = '.tags'
@@ -235,13 +261,13 @@ set updatetime=250
 "=======================================
 let g:javascript_plugin_flow = 1
 "========================================
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 " autocmd BufRead,BufNewFile *.vue set filetype=vue                               " .config/nvim/syntax/vue/Syntax.Include.vim
 autocmd BufRead,BufNewFile *.vue set filetype=html
 
@@ -282,20 +308,6 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
-" ================ Statusline ========================
-set statusline=\ %{toupper(mode())}                                             "Mode
-set statusline+=\ \│\ %4F                                                       "File path
-set statusline+=\ %1*%m%*                                                       "Modified indicator
-set statusline+=\ %w                                                            "Preview indicator
-set statusline+=\ %r                                                            "Read only indicator
-set statusline+=\ %q                                                            "Quickfix list indicator
-set statusline+=\ %=                                                            "Start right side layout
-set statusline+=\ %{&enc}                                                       "Encoding
-set statusline+=\ \│\ %y                                                        "Filetype
-set statusline+=\ \│\ %p%%                                                      "Percentage
-set statusline+=\ \│\ %l/%L                                                     "Current line number/Total line numbers
-set statusline+=\ \│\ %c                                                        "Column number
-"set statusline+=\ \│%0*%{ALEGetStatusLine()}%*                                  "Errors count
 "===================nerdtree==========================
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -332,19 +344,39 @@ imap <C-space>     <Plug>(neosnippet_expand_or_jump)
 smap <C-space>     <Plug>(neosnippet_expand_or_jump)
 xmap <c-space>     <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
+
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
+inoremap <expr><F4> pumvisible()? deoplete#mappings#close_popup() : "\<Tab>"
 " For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+"========================function for fix deoplete==============
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction 
+"==============trailing spaces red color=========================
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 "============transparency=========================
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE

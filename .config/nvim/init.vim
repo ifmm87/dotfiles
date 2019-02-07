@@ -40,6 +40,8 @@ Plug 'majutsushi/tagbar'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
+Plug 'tpope/vim-dadbod'
+Plug 'vim-scripts/dbext.vim'
 call plug#end()
 
 "=======================================================================
@@ -381,3 +383,9 @@ autocmd BufWinLeave * call clearmatches()
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
 hi! EndOfBuffer ctermfg=NONE guibg=NONE
+"=========================
+autocmd VimEnter * DBCompleteTables
+let g:dbext_default_profile_myDB='type=pgsql:host=localhost:user=postgres:dsnname=myDB:dbname=probolivia_2311:passwd=postgres'
+ let g:dbext_default_profile='myDB'
+
+

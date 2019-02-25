@@ -30,9 +30,6 @@ Plug 'scrooloose/nerdcommenter'
 "Plug 'scrooloose/syntastic'
 Plug 'othree/html5.vim'
 Plug 'tomasiser/vim-code-dark'
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt' " Also add Glaive, which is used to configure codefmt's maktaba flags. See  `:help :Glaive` for usage.
-Plug 'google/vim-glaive'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -47,6 +44,9 @@ Plug 'digitaltoad/vim-pug'
 Plug 'pangloss/vim-javascript'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
+" Add maktaba and codefmt to the runtimepath.
+" " (The latter must be installed before it can be used.)
+Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier','branch': 'release/1.x', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 call plug#end()
 
 "=======================================================================
@@ -77,6 +77,7 @@ syntax on
 set noswapfile
 set nobackup
 set nowb
+set autoread
 set smartindent
 set background=dark  " Fondo del tema: dark/light
 if (has("termguicolors"))
@@ -123,7 +124,6 @@ nnoremap <Leader>bt :BTags<CR>
 nnoremap <Leader>bh :History<CR>
 " Reload init.vim
 noremap <Leader>r :so %<CR>
-nnoremap <leader>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 nnoremap <leader>f :ZoomWinTabToggle<CR>
 map <leader>t :tabnew<CR>
 " highlight jumping
@@ -135,13 +135,12 @@ nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :NERDTreeFind<CR>
 "para la indentacion
 map <leader>i gg=G'' <CR>
-"para coregir espacios
-map <leader>I :FormatCode prettier<CR>
 " Generate tags
 nnoremap <Leader>gt :sp term://ctags -R --exclude=node_modules .<CR>
 
 " Corregir errores de ALEFix
 nnoremap <Leader>fe :ALEFix<CR>
+nnoremap <F12> :ALEGoToDefinition<CR>
 nmap <silent> <leader>fk :ALENext<cr>
 nmap <silent> <leader>fj :ALEPrevious<cr>
 nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
@@ -230,7 +229,7 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_linters = {'javascript': ['eslint']}                                  "Lint js with eslint
 let g:ale_fixers = {'javascript': ['prettier', 'eslint']}                       "Fix eslint errors
 "/let g:ale_open_list = 1
-let g:ale_javascript_prettier_options = '--print-width 100'                     "Set max width to 100 chars for prettier
+let g:ale_javascript_prettier_options = '--print-width 180 --trailing-comma none --single-quote' " Set max width to 100 chars for prettier
 let g:ale_lint_on_save = 1                                                      "Lint when saving a file
 let g:ale_sign_error = '✖'                                                      "Lint error sign
 let g:ale_sign_warning = '⚠'                                                    "Lint warning sign
@@ -392,3 +391,57 @@ autocmd BufWinLeave * call clearmatches()
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
 hi! EndOfBuffer ctermfg=NONE guibg=NONE
+"==============prettier==========================
+" max line length that prettier will wrap on
+" " Prettier default: 80
+let g:prettier#config#print_width = 180
+"
+" " number of spaces per indentation level
+" " Prettier default: 2
+let g:prettier#config#tab_width = 2
+"
+" " use tabs over spaces
+" " Prettier default: false
+let g:prettier#config#use_tabs = 'false'
+"
+" " print semicolons
+" " Prettier default: true
+let g:prettier#config#semi = 'true'
+"
+" " single quotes over double quotes
+" " Prettier default: false
+let g:prettier#config#single_quote = 'true'
+"
+" " print spaces between brackets
+" " Prettier default: true
+let g:prettier#config#bracket_spacing = 'true'
+"
+" " put > on the last line instead of new line
+" " Prettier default: false
+let g:prettier#config#jsx_bracket_same_line = 'true'
+"
+" " avoid|always
+" " Prettier default: avoid
+let g:prettier#config#arrow_parens = 'always'
+"
+" " none|es5|all
+" " Prettier default: none
+let g:prettier#config#trailing_comma = 'none'
+"
+" " flow|babylon|typescript|css|less|scss|json|graphql|markdown
+" " Prettier default: babylon
+let g:prettier#config#parser = 'flow'
+"
+" " cli-override|file-override|prefer-file
+"let g:prettier#config#config_precedence = 'prefer-file'
+let g:prettier#config#config_precedence = 'file-override'
+"
+" " always|never|preserve
+let g:prettier#config#prose_wrap = 'preserve'
+"
+" " css|stri
+"
+" ct|ignore
+let g:prettier#config#html_whitespace_sensitivity = 'css'
+let g:prettier#partial_format=1
+

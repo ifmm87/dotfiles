@@ -47,6 +47,10 @@ Plug 'cakebaker/scss-syntax.vim'
 " Add maktaba and codefmt to the runtimepath.
 " " (The latter must be installed before it can be used.)
 Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier','branch': 'release/1.x', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'maksimr/vim-jsbeautify'
+
 call plug#end()
 
 "=======================================================================

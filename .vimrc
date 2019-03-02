@@ -18,23 +18,19 @@ let g:mapleader = " "
 call plug#begin('~/.vim/plugged')
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
 " Initialize plugin system
 Plug 'martingms/vipsql'
-Plug 'vim-scripts/vimongous'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
-
+Plug  'zweifisch/pipe2eval'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
@@ -113,8 +109,4 @@ let g:multi_cursor_use_default_mapping=0
  let g:multi_cursor_skip_key            = '<C-M>'
 "
 "
-
-
-
-
-
+let g:pipe2eval_map_key = '<Leader>mg'

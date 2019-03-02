@@ -47,9 +47,6 @@ Plug 'cakebaker/scss-syntax.vim'
 " Add maktaba and codefmt to the runtimepath.
 " " (The latter must be installed before it can be used.)
 Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier','branch': 'release/1.x', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'maksimr/vim-jsbeautify'
 
 call plug#end()
 
@@ -151,7 +148,7 @@ nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
 "==========CONTROL===MAPPINGS====================================
 " Map save to Ctrl + S
 map <c-s> :w<CR>
-imap <c-s> <C-o>:w<CR>
+imap <c-s> <Esc>:w<CR>
 " Indenting in visual mode
 xnoremap <s-tab> <gv
 xnoremap <tab> >gv
@@ -395,7 +392,9 @@ autocmd BufWinLeave * call clearmatches()
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
 hi! EndOfBuffer ctermfg=NONE guibg=NONE
-"==============prettier==========================
+"========================================================
+autocmd FileType vue syntax sync fromstart
+"===================prettier==============================
 " max line length that prettier will wrap on
 " " Prettier default: 80
 let g:prettier#config#print_width = 180

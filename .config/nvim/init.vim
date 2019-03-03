@@ -1,17 +1,15 @@
-"=======================PLUGINS=================================
+"=======================PLUGINS=================================L:
 let g:mapleader = " "
 " Directorio de plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neco-syntax'  " Fuente general de auto completado
-"Plug 'ervandew/supertab'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'lifepillar/vim-mucomplete' " Completion wrapper
 Plug 'Shougo/echodoc.vim'
 Plug 'w0rp/ale', { 'do': 'npm install -g prettier' }
 Plug 'sheerun/vim-polyglot'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'haya14busa/incsearch.vim'
@@ -27,30 +25,22 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript.jsx'] }
 Plug 'inkarkat/vim-SyntaxRange'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'scrooloose/syntastic'
 Plug 'othree/html5.vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'majutsushi/tagbar'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
-"Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'storyn26383/vim-vue'
 " Optional:
 Plug 'digitaltoad/vim-pug'
-Plug 'pangloss/vim-javascript'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
 " Add maktaba and codefmt to the runtimepath.
-" " (The latter must be installed before it can be used.)
 Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier','branch': 'release/1.x', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-
 call plug#end()
-
-"=======================================================================
 
 "=================================GENERAL SETTINGS======================
 set title
@@ -95,7 +85,6 @@ autocmd Filetype javascript set ts=2
 
 "=========================LEADER MAPPINGS==========================
 nnoremap <leader>s :w<CR>
-nnoremap <leader>e :e $MYVIMRC<CR>  " Abrir el archivo init.vim con <líder> + e
 " Usar <líder> + y para copiar al portapapeles
 vnoremap <leader>y "+y
 nnoremap <leader>y "+y
@@ -132,16 +121,12 @@ nnoremap <leader>% :MtaJumpToOtherTag<cr>
 " Clear search highlight
 nnoremap <Leader><space> :noh<CR>
 " Nerdtree
-nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <F8> :NERDTreeToggle<CR>
 nnoremap <F3> :NERDTreeFind<CR>
 "para la indentacion
 map <leader>i gg=G'' <CR>
-" Generate tags
-nnoremap <Leader>gt :sp term://ctags -R --exclude=node_modules .<CR>
-
 " Corregir errores de ALEFix
-nnoremap <Leader>fe :ALEFix<CR>
-nnoremap <F12> :ALEGoToDefinition<CR>
+noremap <Leader>fe :ALEFix<CR>
 nmap <silent> <leader>fk :ALENext<cr>
 nmap <silent> <leader>fj :ALEPrevious<cr>
 nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
@@ -181,9 +166,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nmap <F8> :TagbarToggle<CR>
-"=================================================================================
-"=================================================================================
 "=================================================================================
 "=================================================================================
 let g:multi_cursor_use_default_mapping=0
@@ -192,7 +174,10 @@ let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_next_key            = '<C-m>'
 let g:multi_cursor_skip_key            = '<C-M>'
-
+"===============================LSP client====================================
+" Required for operations modifying multiple buffers like rename.
+" set hidden
+"=====================================NERDTREE====================
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
 
 let g:NERDTreeIgnore = [
@@ -208,27 +193,22 @@ set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
 "============================================================
-" Activar deoplete al iniciar Neovim
-let g:deoplete#enable_at_startup = 1
-
-" Cerrar automaticamente la ventana de vista previa (donde se muestra documentación, si existe)
-augroup deopleteCompleteDoneAu
-	autocmd!
-	autocmd CompleteDone * silent! pclose!
-augroup END
-"====================================
 " Invertir direccion de navegacion (de arriba a abajo)
 let g:SuperTabDefaultCompletionType = '<c-n>'
 "=====================================
 " Activar echodoc al iniciar Neovim
 let g:echodoc_enable_at_startup = 1
+"========ALE======================================
+noremap <F12> :ALEGoToDefinition<CR>
+noremap <Leader>fe :ALEFix<CR>
+noremap <Leader>fr :ALEFindReferences<CR>
 " Mostrar mejor mensajes de error
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 0
-let g:ale_linters = {'javascript': ['eslint']}                                  "Lint js with eslint
-let g:ale_fixers = {'javascript': ['prettier', 'eslint']}                       "Fix eslint errors
+let g:ale_linters = {'javascript': ['eslint', 'tsserver']}                                  "Lint js with eslint
+let g:ale_fixers = {'javascript': ['prettier', 'eslint' ]}                       "Fix eslint errors
 "/let g:ale_open_list = 1
 let g:ale_javascript_prettier_options = '--print-width 180 --trailing-comma none --single-quote' " Set max width to 100 chars for prettier
 let g:ale_lint_on_save = 1                                                      "Lint when saving a file
@@ -236,6 +216,8 @@ let g:ale_sign_error = '✖'                                                    
 let g:ale_sign_warning = '⚠'                                                    "Lint warning sign
 let g:ale_statusline_format =[' %d E ', ' %d W ', '']  
 let g:ale_set_highlights = 1
+let g:ale_completion_enabled = 1
+let g:ale_completion_max_suggestions = 500
 highlight ALEError ctermbg=DarkMagenta cterm=underline
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
@@ -252,14 +234,11 @@ endfunction
 
 set statusline=%{LinterStatus()}
 "=================================
-" Nombre del archivo generado
-let g:gutentags_ctags_tagfile = '.tags'
 " Ejecutar comandos con alt-enter :Commands
 let g:fzf_commands_expect = 'alt-enter'
 " Guardar historial de búsquedas
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-" Empezar a buscar presionando Ctrl + p
 " Quitar resaltado luego de buscar
 let g:incsearch#auto_nohlsearch = 1
 let g:NERDSpaceDelims = 1  " Agregar un espacio después del delimitador del comentario
@@ -269,13 +248,6 @@ set updatetime=250
 "=======================================
 let g:javascript_plugin_flow = 1
 "========================================
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
 " autocmd BufRead,BufNewFile *.vue set filetype=vue                               " .config/nvim/syntax/vue/Syntax.Include.vim
 autocmd BufRead,BufNewFile *.vue set filetype=html
 
@@ -296,12 +268,6 @@ let g:WebDevIcons_conceal_nerdtree_brackets = 0                                 
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
-"===============deoplete====================
-let g:deoplete#enable_at_startup = 1                                            "Enable deoplete autocompletion
-let g:deoplete#file#enable_buffer_path = 1                                      "Autocomplete files relative to current buffer
-let g:deoplete#tag#cache_limit_size = 10000000 
-
-"=======================================================
 set wildmode=list:full
 set wildignore=*.o,*.obj,*~                                                     "stuff to ignore when tab completing
 set wildignore+=*.git*
@@ -343,25 +309,17 @@ let g:mta_filetypes = {
     \}
 "======================================================
 " Autocompletado para neosnippet
-"let g:deoplete#enable_at_startup = 1
-"let g:neosnippet#disable_runtime_snippets = {'_' : 1} 
 let g:neosnippet#snippets_directory = ['~/.config/nvim/snippets'] 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-space>     <Plug>(neosnippet_expand_or_jump)
 smap <C-space>     <Plug>(neosnippet_expand_or_jump)
 xmap <c-space>     <Plug>(neosnippet_expand_target)
-
-
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-inoremap <expr><F4> pumvisible()? deoplete#mappings#close_popup() : "\<Tab>"
+" snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+ let g:UltiSnipsEditSplit="vertical"
 " For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
@@ -425,7 +383,7 @@ let g:prettier#config#jsx_bracket_same_line = 'true'
 "
 " " avoid|always
 " " Prettier default: avoid
-let g:prettier#config#arrow_parens = 'always'
+let g:prettier#config#arrow_parens = 'avoid'
 "
 " " none|es5|all
 " " Prettier default: none
@@ -447,4 +405,10 @@ let g:prettier#config#prose_wrap = 'preserve'
 " ct|ignore
 let g:prettier#config#html_whitespace_sensitivity = 'css'
 let g:prettier#partial_format=1
-
+"============================================
+" autocompletion
+set completeopt+=preview
+set completeopt+=menuone
+set completeopt+=noinsert
+set shortmess+=c " turn off completion messages
+let g:mucomplete#enable_auto_at_startup = 1

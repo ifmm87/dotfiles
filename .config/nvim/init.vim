@@ -395,7 +395,7 @@ let g:prettier#config#parser = 'flow'
 "
 " " cli-override|file-override|prefer-file
 "let g:prettier#config#config_precedence = 'prefer-file'
-let g:prettier#config#config_precedence = 'file-override'
+let g:prettier#config#config_precedence = 'prefer-file'
 "
 " " always|never|preserve
 let g:prettier#config#prose_wrap = 'preserve'

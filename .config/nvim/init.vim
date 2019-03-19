@@ -33,7 +33,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
-Plug 'storyn26383/vim-vue'
+Plug 'posva/vim-vue'
 " Optional:
 Plug 'digitaltoad/vim-pug'
 Plug 'hail2u/vim-css3-syntax'
@@ -121,7 +121,7 @@ nnoremap <leader>% :MtaJumpToOtherTag<cr>
 " Clear search highlight
 nnoremap <Leader><space> :noh<CR>
 " Nerdtree
-nnoremap <F8> :NERDTreeToggle<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :NERDTreeFind<CR>
 "para la indentacion
 map <leader>i gg=G'' <CR>
@@ -207,8 +207,9 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 0
-let g:ale_linters = {'javascript': ['eslint', 'tsserver']}                                  "Lint js with eslint
-let g:ale_fixers = {'javascript': ['prettier', 'eslint' ]}                       "Fix eslint errors
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let g:ale_linters = {'javascript': ['eslint', 'tsserver'], 'vue': ['eslint', 'vls']}                                  "Lint js with eslint
+let g:ale_fixers = {'javascript': ['prettier', 'eslint' ], 'vue': ['eslint', 'vls']}                       "Fix eslint errors
 "/let g:ale_open_list = 1
 let g:ale_javascript_prettier_options = '--print-width 180 --trailing-comma none --single-quote' " Set max width to 100 chars for prettier
 let g:ale_lint_on_save = 1                                                      "Lint when saving a file
@@ -247,9 +248,6 @@ let g:NERDTrimTrailingWhitespace = 1  " Quitar espacios al quitar comentario
 set updatetime=250
 "=======================================
 let g:javascript_plugin_flow = 1
-"========================================
-" autocmd BufRead,BufNewFile *.vue set filetype=vue                               " .config/nvim/syntax/vue/Syntax.Include.vim
-autocmd BufRead,BufNewFile *.vue set filetype=html
 
 function! NERDTreeHighlightFile(extension, fg)                                  " NERDTrees File highlighting color
   exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s.*\.\('. substitute(a:extension,'_','\\|','') .'\)$#'
@@ -324,9 +322,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-"========================para volver a leer un archivo vue=======
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css 
-let g:vue_disable_pre_processors=1
 "========================function for fix deoplete==============
 function! Multiple_cursors_before()
   if exists(':NeoCompleteLock')==2
@@ -350,8 +345,6 @@ autocmd BufWinLeave * call clearmatches()
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
 hi! EndOfBuffer ctermfg=NONE guibg=NONE
-"========================================================
-autocmd FileType vue syntax sync fromstart
 "===================prettier==============================
 " max line length that prettier will wrap on
 " " Prettier default: 80
@@ -412,3 +405,27 @@ set completeopt+=menuone
 set completeopt+=noinsert
 set shortmess+=c " turn off completion messages
 let g:mucomplete#enable_auto_at_startup = 1
+"========================================================
+let g:ft = ''
+function! NERDCommenter_before()
+  if &ft == 'vue'
+  let g:ft = 'vue'
+  let stack = synstack(line('.'), col('.'))
+  if len(stack) > 0
+     let syn = synIDattr((stack)[0], 'name')
+     if len(syn) > 0
+       exe 'setf ' . substitute(tolower(syn), '^vue_', '', '')
+     endif
+   endif
+  endif
+endfunction
+function! NERDCommenter_after()
+   if g:ft == 'vue'
+     setf vue
+     let g:ft = ''
+   endif
+ endfunction
+"========================para volver a leer un archivo vue=======
+"autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css 
+let g:vue_disable_pre_processors=1
+autocmd FileType vue syntax sync fromstart

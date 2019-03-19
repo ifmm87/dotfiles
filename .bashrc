@@ -3,6 +3,7 @@
 #
 export TERMINAL="st"
 export EDITOR="vim"
+export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 [[ $- != *i* ]] && return
 
 colors() {

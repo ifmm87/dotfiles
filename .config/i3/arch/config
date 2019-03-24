@@ -8,7 +8,7 @@ set $term  --no-startup-id st
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 3 
+new_window pixel 2 
 new_float normal
 
 # Hide borders
@@ -16,7 +16,7 @@ hide_edge_borders none
 
 # change borders
 bindsym $mod+u border none
-bindsym $mod+y border pixel 3
+bindsym $mod+y border pixel 2
 bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -33,7 +33,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_run -i -h 30 -b -p 'Ivan' -fn 'Hack:pixelsize=15' -nb '#000000' -nf '#ff0000' -sf '#ffffff' -sb '#990000' 
+bindsym $mod+d exec --no-startup-id dmenu_run -i -b -p 'Ivan' -fn 'Hack:pixelsize=15' -nb '#000000' -nf '#ff0000' -sf '#ffffff' -sb '#990000' 
 
 
 #444 launch categorized menu

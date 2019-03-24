@@ -7,6 +7,7 @@ set $term  --no-startup-id st
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
+exec_always "setxkbmap -layout latam"
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 new_window pixel 2 
 new_float normal
@@ -142,8 +143,8 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1
-set $ws2 2
+set $ws1 1: 
+set $ws2 2:: 
 set $ws3 3
 set $ws4 4
 set $ws5 5

@@ -55,8 +55,8 @@ font-1 = Siji:style=Regular
 font-0 = "Hack:size=12;0"
 
 modules-left = i3
-modules-center = mpd 
-modules-right = filesystem alsa xkeyboard memory cpu eth  temperature date powermenu
+modules-center = title mpd 
+modules-right = filesystem alsa xkeyboard  cpu wlan   date 
 
 tray-position = right
 tray-padding = 1
@@ -93,7 +93,7 @@ label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
+label-indicator-background = ${colors.background}
 label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
@@ -132,6 +132,7 @@ label-empty-padding = 2
 
 [module/i3]
 type = internal/i3
+ws-icon-0 = ⏩
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
@@ -170,13 +171,14 @@ label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+format-online = <icon-repeatone><icon-repeat> <icon-prev> <icon-stop>  <toggle> <icon-next><label-song>
 
 host = 127.0.0.1
 port = 6600
-label-offline = 🎜 mpd is offline
+label-offline =  mpd is offline
 
 ; Only applies if <icon-X> is used
+
 icon-play = 
 icon-pause = 
 icon-stop = 
@@ -185,10 +187,10 @@ icon-next = 
 icon-seekb = 
 icon-seekf = ⏩
 icon-random = 🔀
-icon-repeat = 🔁
-icon-repeatone = 🔂
-icon-single = 🔂
-icon-consume = ✀
+icon-repeat = 
+icon-repeatone =
+ icon-single = 🔂
+con-consume = ✀
 label-song-maxlen = 25
 label-song-ellipsis = true
 
@@ -225,7 +227,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp2s0
+interface =wlx503eaa6000e6 
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -399,3 +401,23 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+[module/title]
+type = internal/xwindow
+; Available tags:
+;   <label> (default)
+format = <label>
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-padding = 4
+label-indicator-background = ${colors.secondary}
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 50
+
+; Used instead of label when there is no window title
+; Available tokens:
+;   None
+label-empty = Empty
+label-empty-foreground = #707880

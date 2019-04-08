@@ -1,22 +1,22 @@
 
 !! The default colors are "Gruvbox":
-*.color0: #1d2021
-*.color1: #cc241d
-*.color2: #98971a
-*.color3: #d79921
-*.color4: #458588
-*.color5: #b16286
-*.color6: #689d6a
-*.color7: #a89984
-*.color8: #928374
-*.color9: #fb4934
-*.color10: #b8bb26
-*.color11: #fabd2f
-*.color12: #83a598
-*.color13: #d3869b
-*.color14: #8ec07c
-*.color15: #ebdbb2
+*.color0: #d7ba7d
+*.color1: #d7ba7d
+*.color2: #D4D4D4
+*.color3: #4EC9B0
+*.color4: #608B4E
+*.color5: #b5cea8
+*.color6: #f44747
+*.color7: #d4d4d4
+*.color8: #9cdcfe
+*.color9: #808080
+*.color10: #9cdcfe
+*.color11: #9cdcfe
+*.color12: #9cdcfe
+*.color13: #9cdcfe
+*.color14: #9cdcfe
+*.color15: #9cdcfe
 !! Transparency (0-255):
-*.alpha: 230
+*.alpha: 240 
 !! Set a default font and font size as below:
 *.font: hack-10;

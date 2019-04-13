@@ -51,12 +51,12 @@ padding-right = 0
 
 module-margin-left = 1
 module-margin-right = 1
-font-1 =  Wuncon Siji:style=Regular
-font-0 = "Hack:pixelsize=14;0"
+font-1 =  Siji:style=Regular
+font-0 = "Hack:pixelsize=12;0"
 
 modules-left = i3
-modules-center = mpd 
-modules-right = filesystem alsa xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-center = title mpd 
+modules-right = alsa xkeyboard wlan battery  date 
 
 tray-position = right
 tray-padding = 1
@@ -112,19 +112,19 @@ type = internal/bspwm
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 1
 
 label-occupied = %index%
-label-occupied-padding = 2
+label-occupied-padding = 1
 
 label-urgent = %index%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
 label-empty = %index%
 label-empty-foreground = #000000 
 ;${colors.foreground-alt}
-label-empty-padding = 2
+label-empty-padding = 1
 
 ; Separator in between workspaces
 ; label-separator = |
@@ -135,20 +135,20 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+;Only show workspaces on the same output as the bar
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000000
 label-mode-background = ${colors.primary}
 
-; focused = Active workspace on focused monitor
+ focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 label-focused-foreground=#fff
-; unfocused = Inactive workspace on any monitor
+;unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
@@ -169,25 +169,26 @@ label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+format-online = <icon-repeatone><icon-repeat> <icon-prev> <icon-stop>  <toggle> <icon-next><label-song>
 
 host = 127.0.0.1
 port = 6600
-label-offline = 🎜 mpd is offline
+label-offline =  mpd is offline
 
 ; Only applies if <icon-X> is used
-icon-play = ⏵
-icon-pause = ⏸
-icon-stop = ⏹
-icon-prev = ⏮
-icon-next = ⏭
-icon-seekb = ⏪
+
+icon-play =
+icon-pause =
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-seekb = 
 icon-seekf = ⏩
 icon-random = 🔀
-icon-repeat = 🔁
-icon-repeatone = 🔂
-icon-single = 🔂
-icon-consume = ✀
+icon-repeat =
+icon-repeatone =
+ icon-single = 🔂
+con-consume = ✀
 label-song-maxlen = 25
 label-song-ellipsis = true
 
@@ -398,3 +399,23 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+[module/title]
+type = internal/xwindow
+; Available tags:
+;   <label> (default)
+format = <label>
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-padding = 4
+label-indicator-background = ${colors.secondary}
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 50
+
+; Used instead of label when there is no window title
+; Available tokens:
+;   None
+label-empty = Empty
+label-empty-foreground = #707880

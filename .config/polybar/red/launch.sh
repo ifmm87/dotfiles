@@ -23,8 +23,6 @@ export cpu_prefix_a="#ff0000"
 export mem_prefix_a="#ff0000"
 export bat_prefix_a="#ff0000"
 export time_a="#ff0000"
-MONITOR=HDMI-1 polybar example &
-MONITOR=HDMI-2 polybar example &
 # Launch Polybar, using default config location ~/.config/polybar/config
 polybar example &
 

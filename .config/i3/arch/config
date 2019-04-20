@@ -44,7 +44,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ################################################################################################
 
 #exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec $term -e 'alsamixer'
+bindsym $mod+Ctrl+m exec $term -e 'pulsemixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
@@ -416,10 +416,15 @@ mode "$mode_gaps_outer" {
 }
 # Media keys
 # Media volume controls
-bindsym XF86AudioMute exec amixer sset 'Master' toggle
-bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
-bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
+#bindsym XF86AudioMute exec pulsemixer sset 'Master' toggle
+#bindsym XF86AudioLowerVolume exec pulsemixer sset 'Master' 5%-
+#bindsym XF86AudioRaiseVolume exec pulsemixer sset 'Master' 5%+
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute @DEFAULT_SINK@ false; pactl set-sink-volume @DEFAULT_SINK@ +2%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-mute @DEFAULT_SINK@ false; pactl set-sink-volume @DEFAULT_SINK@ -2%"
+bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+
 # Sreen brightness controls
+
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 # colors

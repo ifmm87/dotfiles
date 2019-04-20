@@ -34,7 +34,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_run -i -b -p 'Ivan' -fn 'Hack:pixelsize=15' -nb '#000000' -nf '#ff0000' -sf '#ffffff' -sb '#990000' 
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons 
 
 
 #444 launch categorized menu
@@ -424,7 +424,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 # colors
 #class                 border  backgr. text    indicator child_border
-client.focused          #ff0000 #285577 #ffffff #ff0000   #ffffff
+client.focused          #ff0000 #285577 #ffffff #ffff00   #ff0000
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000

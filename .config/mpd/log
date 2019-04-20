@@ -251,3 +251,68 @@ Jan 20 20:26 : client: [77] opened from 127.0.0.1:37910
 Jan 20 20:26 : client: [77] closed
 Jan 20 20:34 : client: [71] closed
 Jan 20 20:34 : client: [78] opened from 127.0.0.1:38232
+Apr 19 11:19 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 19 11:19 : exception: Failed to decode /home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/07-Lech.mp3
+Apr 19 11:19 : exception: nested: Failed to open '/home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/07-Lech.mp3': No such file or directory
+Apr 19 11:19 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/07-Lech.mp3"
+Apr 19 11:19 : exception: inotify_add_watch() has failed: No such file or directory
+Apr 19 11:19 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 19 11:22 : client: [0] opened from 127.0.0.1:35128
+Apr 19 11:22 : client: [0] closed
+Apr 19 11:22 : client: [1] opened from 127.0.0.1:35130
+Apr 19 11:23 : client: [2] opened from 127.0.0.1:35136
+Apr 19 11:23 : exception: Failed to decode /home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/07-Lech.mp3
+Apr 19 11:23 : exception: nested: Failed to open '/home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/07-Lech.mp3': No such file or directory
+Apr 19 11:23 : client: [2] closed
+Apr 19 11:23 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/07-Lech.mp3"
+Apr 19 11:23 : exception: Failed to decode /home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/08-Goodbye.mp3
+Apr 19 11:23 : exception: nested: Failed to open '/home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/08-Goodbye.mp3': No such file or directory
+Apr 19 11:23 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/08-Goodbye.mp3"
+Apr 19 11:23 : exception: Failed to decode /home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/01-XIX.mp3
+Apr 19 11:23 : exception: nested: Failed to open '/home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/01-XIX.mp3': No such file or directory
+Apr 19 11:23 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/01-XIX.mp3"
+Apr 19 11:23 : exception: Failed to decode /home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/02-Sarcastrophe.mp3
+Apr 19 11:23 : exception: nested: Failed to open '/home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/02-Sarcastrophe.mp3': No such file or directory
+Apr 19 11:23 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/02-Sarcastrophe.mp3"
+Apr 19 11:23 : exception: Failed to decode /home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/03-AOV.mp3
+Apr 19 11:23 : exception: nested: Failed to open '/home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/03-AOV.mp3': No such file or directory
+Apr 19 11:23 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/03-AOV.mp3"
+Apr 19 11:23 : exception: Failed to decode /home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/04-The Devil In I.mp3
+Apr 19 11:23 : exception: nested: Failed to open '/home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/04-The Devil In I.mp3': No such file or directory
+Apr 19 11:23 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/04-The Devil In I.mp3"
+Apr 19 11:23 : exception: Failed to decode /home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3
+Apr 19 11:23 : exception: nested: Failed to open '/home/ivan/Music/Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3': No such file or directory
+Apr 19 11:23 : player: played "Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3"
+Apr 19 12:01 : client: [1] closed
+Apr 19 12:01 : client: [3] opened from 127.0.0.1:36042
+Apr 19 12:02 : client: [3] closed
+Apr 19 12:02 : client: [4] opened from 127.0.0.1:36046
+Apr 19 12:07 : client: [4] closed
+Apr 19 12:07 : client: [5] opened from 127.0.0.1:36060
+Apr 19 12:12 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 19 12:12 : exception: inotify_add_watch() has failed: No such file or directory
+Apr 19 12:12 : client: [0] opened from 127.0.0.1:53530
+Apr 19 12:45 : client: [0] closed
+Apr 19 12:46 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 19 12:46 : exception: inotify_add_watch() has failed: No such file or directory
+Apr 19 12:46 : client: [0] opened from 127.0.0.1:39020
+Apr 19 13:04 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 19 13:04 : exception: inotify_add_watch() has failed: No such file or directory
+Apr 19 13:04 : client: [0] opened from 127.0.0.1:56376
+Apr 19 13:12 : client: [0] closed
+Apr 19 13:12 : client: [1] opened from 127.0.0.1:56466
+Apr 19 13:14 : client: [1] closed
+Apr 19 13:14 : client: [2] opened from 127.0.0.1:56498
+Apr 19 13:40 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 19 13:40 : exception: inotify_add_watch() has failed: No such file or directory
+Apr 19 13:40 : client: [0] opened from 127.0.0.1:48330
+Apr 19 19:34 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 19 19:34 : exception: inotify_add_watch() has failed: No such file or directory
+Apr 19 19:34 : client: [0] opened from 127.0.0.1:54296
+Apr 20 05:20 : client: [0] closed
+Apr 20 05:20 : client: [1] opened from 127.0.0.1:55168
+Apr 20 05:27 : client: [1] closed
+Apr 20 05:27 : client: [2] opened from 127.0.0.1:55348
+Apr 20 06:08 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 20 06:08 : exception: inotify_add_watch() has failed: No such file or directory
+Apr 20 06:08 : client: [0] opened from 127.0.0.1:60956

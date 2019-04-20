@@ -17,6 +17,6 @@
 *.color14: #9cdcfe
 *.color15: #9cdcfe
 !! Transparency (0-255):
-*.alpha: 240 
+*.alpha: 220 
 !! Set a default font and font size as below:
 *.font: hack-10;

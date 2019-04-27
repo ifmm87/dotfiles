@@ -355,11 +355,11 @@
 #
 #lyrics_fetchers = lyricwiki, azlyrics, genius, sing365, lyricsmania, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, internet
 #
-#follow_now_playing_lyrics = no
+follow_now_playing_lyrics = yes
 #
 #fetch_lyrics_for_current_song_in_background = no
 #
-#store_lyrics_in_song_dir = no
+store_lyrics_in_song_dir = yes
 #
 #generate_win32_compatible_filenames = yes
 #
@@ -546,5 +546,5 @@ visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_output_name = "fifo"
 visualizer_sync_interval = "30" 
 visualizer_in_stereo = "yes"
-visualizer_type = "spectrum"
+visualizer_type = "wave_filled"
 visualizer_look = "+|"

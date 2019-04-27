@@ -20,7 +20,7 @@ case "$1" in
     reboot)
         systemctl reboot
         ;;
-    shutown)
+    shutdown)
         systemctl poweroff
         ;;
     *)

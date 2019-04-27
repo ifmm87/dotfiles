@@ -95,7 +95,7 @@ bindsym $mod+n border normal
 bindsym $mod+Return exec st
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id dmenu_run -i -b -p 'Ivan' -fn 'Hack:pixelsize=15' -nb '#021524' -nf '#ffffff' -sf '#ffffff' -sb '#000000' 
@@ -223,7 +223,6 @@ mode "$mode_system" {
 # Autostart applications
 exec --no-startup-id systemctl enable pulseaudio.service --user
 exec --no-startup-id pulseaudio --start
-        
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec_always --no-startup-id xrandr --output HDMI-2 --auto --left-of HDMI-1

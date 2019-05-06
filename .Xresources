@@ -54,13 +54,13 @@ st.font: hack-12;
  *.color11:     #f3bd09
  *.color4:      #2a84d2
  *.color12:     #1081d6
- *.color5:      #4e5ab7 
+ *.color5:      #4e5ab7
  *.color13:     #5350b9
  *.color6:      #1081d6
  *.color14:     #0f7ddb
  *.color7:      #d6dbe5
  *.color15:     #ffffff
- *.colorBD:     #d6dbe5 
+ *.colorBD:     #d6dbe5
 
 /* ! base16 */
 /* *.color0:       #181818 */

@@ -3,7 +3,7 @@
 st.alpha: 220
 
 !! Set a default font and font size as below:
-st.font: hack-12;
+st.font: hack-11;
 
 /* !! gruvbox: */
 /* *.color0: #1d2021 */

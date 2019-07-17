@@ -14,8 +14,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
 Plug  'zweifisch/pipe2eval'
 "Plug 'dracula/vim', { 'as': 'dracula' }
-"Plug 'dunstontc/vim-vscode-theme'
-Plug 'tomasiser/vim-code-dark'
+Plug 'dunstontc/vim-vscode-theme'
+"Plug 'tomasiser/vim-code-dark'
 Plug 'troydm/zoomwintab.vim'  
 Plug 'lifepillar/pgsql.vim'
 Plug 'haya14busa/incsearch.vim'
@@ -57,12 +57,16 @@ set background=dark  " Fondo del tema: dark/light
 " endif
 syntax enable
 " Theme
-colorscheme codedark
+"colorscheme codedark
+colorscheme dark_plus
 "navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+vnoremap <c-c> "+y<CR>
+nnoremap <c-v> "+p<CR>
 nnoremap <leader>s :w<CR>
 " Usar <líder> + y para copiar al portapapeles
 vnoremap <leader>y "+y
@@ -124,7 +128,9 @@ vnoremap K :m '<-2<CR>gv=gv
 let g:sql_type_default = 'pgsql'
 set completeopt+=menuone
 set completeopt+=noselect
-let g:airline_theme = 'codedark'
+"let g:airline_theme = ''
+"
+"
 let g:mucomplete#enable_auto_at_startup = 1
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
 let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo

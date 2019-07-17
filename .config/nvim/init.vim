@@ -26,6 +26,7 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript.jsx'] }
 Plug 'inkarkat/vim-SyntaxRange'
 Plug 'scrooloose/nerdcommenter'
 Plug 'othree/html5.vim'
+"Plug 'mhartington/oceanic-next'
 Plug 'tomasiser/vim-code-dark'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Shougo/neosnippet.vim'
@@ -34,11 +35,11 @@ Plug 'severin-lemaignan/vim-minimap'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
 Plug 'posva/vim-vue'
-" Optional:
+"Optional:
 Plug 'digitaltoad/vim-pug'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
-" Add maktaba and codefmt to the runtimepath.
+Plug 'ipod825/vim-netranger' "Add maktaba and codefmt to the runtimepath.
 Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier','branch': 'release/1.x', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 call plug#end()
 
@@ -69,6 +70,8 @@ set noswapfile
 set nobackup
 set nowb
 set autoread
+au CursorHold,FocusGained * checktime
+"au FocusGained,BufEnter * checktime
 set smartindent
 set background=dark  " Fondo del tema: dark/light
 if (has("termguicolors"))
@@ -76,8 +79,8 @@ if (has("termguicolors"))
 endif
 " Theme
 syntax enable
+"colorscheme OceanicNext
 colorscheme codedark
-"colorscheme dracula
 autocmd Filetype javascript set softtabstop=2
 autocmd Filetype javascript set sw=2
 autocmd Filetype javascript set ts=2
@@ -132,6 +135,8 @@ nmap <silent> <leader>fj :ALEPrevious<cr>
 nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
 "==========CONTROL===MAPPINGS====================================
 " Map save to Ctrl + S
+vnoremap <c-c> "+y<CR>
+nnoremap <c-v> "+p<CR>
 map <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>
 " Indenting in visual mode
@@ -237,9 +242,8 @@ set statusline=%{LinterStatus()}
 "=================================
 " Ejecutar comandos con alt-enter :Commands
 let g:fzf_commands_expect = 'alt-enter'
-" Guardar historial de búsquedas
+"let NERDTreeSortOrder=['\.c$'] Guardar historial de búsquedas
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-
 " Quitar resaltado luego de buscar
 let g:incsearch#auto_nohlsearch = 1
 let g:NERDSpaceDelims = 1  " Agregar un espacio después del delimitador del comentario

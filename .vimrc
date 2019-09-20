@@ -14,8 +14,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
 Plug  'zweifisch/pipe2eval'
 "Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'dunstontc/vim-vscode-theme'
 "Plug 'tomasiser/vim-code-dark'
+Plug 'mhartington/oceanic-next'
 Plug 'troydm/zoomwintab.vim'  
 Plug 'lifepillar/pgsql.vim'
 Plug 'haya14busa/incsearch.vim'
@@ -51,14 +51,14 @@ set nowb
 set autoread
 set smartindent
 set noshowmode
-set background=dark  " Fondo del tema: dark/light
-" if (has("termguicolors"))
-"  set termguicolors
-" endif
-syntax enable
 " Theme
-"colorscheme codedark
-colorscheme dark_plus
+ syntax enable
+" for vim d8
+ if (has("termguicolors"))
+  "set termguicolors
+ endif
+
+colorscheme OceanicNext
 "navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -175,12 +175,7 @@ let g:vipsql_new_buffer_cmd = "rightbelow split"
 
 " Commands executed after opening the scratch buffer
 " Chain multiple commands together with `|` like so:
-" "setlocal buftype=nofile | setlocal nowrap"
 let g:vipsql_new_buffer_config = 'setlocal buftype=nofile'
-
-" Whether or not the vipsql-buffer should automatically scroll to the bottom
-" on new input.
-let g:vipsql_auto_scroll_enabled = 0
 
 " Whether or not to print a separator in the output buffer when sending a new
 " command/query to psql.

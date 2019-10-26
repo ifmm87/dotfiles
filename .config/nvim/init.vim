@@ -6,9 +6,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'lifepillar/vim-mucomplete' " Completion wrapper
+" Plug 'lifepillar/vim-mucomplete' " Completion wrapper
 Plug 'Shougo/echodoc.vim'
-Plug 'w0rp/ale', { 'do': 'npm install -g prettier' }
+" Plug 'w0rp/ale', { 'do': 'npm install -g prettier' }
+Plug 'dense-analysis/ale', { 'do': 'npm install -g prettier' }
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -205,6 +206,7 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 let g:echodoc_enable_at_startup = 1
 "========ALE======================================
 noremap <F12> :ALEGoToDefinition<CR>
+noremap <F11> :ALERename<CR>
 noremap <Leader>fe :ALEFix<CR>
 noremap <Leader>fr :ALEFindReferences<CR>
 " Mostrar mejor mensajes de error
@@ -213,9 +215,10 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 0
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_linters = {'javascript': ['eslint', 'tsserver'], 'vue': ['eslint', 'vls']}                                  "Lint js with eslint
-let g:ale_fixers = {'javascript': ['prettier', 'eslint' ], 'vue': ['eslint', 'vls']}                       "Fix eslint errors
-"/let g:ale_open_list = 1
+let g:ale_linters = {'c': ['gcc', 'clangd', 'clang'], 'cpp': ['g++', 'clangd', 'clang'] ,'javascript': ['eslint', 'tsserver'], 'vue': ['eslint', 'vls']}                                  "Lint js with eslint
+let g:ale_fixers = {'cpp': ['clang-format'],'javascript': ['prettier', 'eslint' ], 'vue': ['eslint', 'vls']}                       "Fix eslint errors
+let g:ale_open_list = 'on_save'
+let g:ale_keep_list_window_open = 0
 let g:ale_javascript_prettier_options = '--print-width 180 --trailing-comma none --single-quote' " Set max width to 100 chars for prettier
 let g:ale_lint_on_save = 1                                                      "Lint when saving a file
 let g:ale_sign_error = '✖'                                                      "Lint error sign
@@ -224,6 +227,13 @@ let g:ale_statusline_format =[' %d E ', ' %d W ', '']
 let g:ale_set_highlights = 1
 let g:ale_completion_enabled = 1
 let g:ale_completion_max_suggestions = 500
+let g:ale_cpp_clang_executable = 'clang++8'
+let g:ale_cpp_clang_options = '-std=c++14 -Wall'
+let g:ale_cpp_clangd_executable = 'clangd'
+ augroup CloseLoclistWindowGroup
+    autocmd!
+    autocmd QuitPre * if empty(&buftype) | lclose | endif
+  augroup END
 highlight ALEError ctermbg=DarkMagenta cterm=underline
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
@@ -409,6 +419,8 @@ set completeopt+=menuone
 set completeopt+=noinsert
 set shortmess+=c " turn off completion messages
 let g:mucomplete#enable_auto_at_startup = 1
+" Use deoplete.
+"let g:deoplete#enable_at_startup = 1
 "========================================================
 let g:ft = ''
 function! NERDCommenter_before()

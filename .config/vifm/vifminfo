@@ -142,8 +142,8 @@ d/home/ivan
 	Downloads
 4
 d/home/ivan/Downloads
-	logo-kyla.png
-5
+	Grammar for IELTS ( PDFDrive.com ).pdf
+9
 
 # Right window history (oldest to newest):
 D/home/ivan/.config
@@ -156,8 +156,14 @@ D/home/ivan/extras/dotfiles/.config/vifm
 	..
 0
 D/home/ivan
-	..
-0
+	mpdconf.example
+22
+D/home
+	ivan
+1
+D/
+	home
+5
 
 # Command line history (oldest to newest):
 :q

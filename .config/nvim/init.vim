@@ -2,7 +2,8 @@
 let g:mapleader = " "
 " Directorio de plugins
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
+Plug 'AndrewRadev/nerdtree', {'branch':'sort-by-atime'}
 Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -184,7 +185,7 @@ let g:multi_cursor_skip_key            = '<C-M>'
 " set hidden
 "=====================================NERDTREE====================
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
-
+let g:NERDTreeSortByAtime = 1
 let g:NERDTreeIgnore = [
 			\ '\.pyc$', '^__pycache__$', '^venv$',
 			\ '^tags$', 'node_modules', '\.o$'

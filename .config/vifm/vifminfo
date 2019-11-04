@@ -59,6 +59,12 @@ d/home/ivan
 d/home/ivan/extras
 	2019-04-20-082646_1920x1080_scrot.png
 3
+d/home/ivan
+	Downloads
+4
+d/home/ivan/Downloads
+	Grammar for IELTS ( PDFDrive.com ).pdf
+9
 
 # Right window history (oldest to newest):
 D/home/ivan/extras/dotfiles/.config/vifm/scripts
@@ -70,9 +76,15 @@ D/home/ivan/extras/dotfiles
 D/home/ivan/.config
 	..
 0
-D/usr/local/bin
-	..
-0
+D/home/ivan
+	mpdconf.example
+22
+D/home
+	ivan
+1
+D/
+	home
+5
 
 # Command line history (oldest to newest):
 :source ~/.config/vifm/vifmrc

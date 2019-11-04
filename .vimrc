@@ -9,7 +9,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Initialize plugin system
-Plug 'martingms/vipsql'
+"Plug 'martingms/vipsql'
 Plug 'tpope/vim-dadbod'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
@@ -21,7 +21,7 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'lifepillar/pgsql.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'lifepillar/vim-mucomplete' " Completion wrapper
-Plug 'vim-scripts/dbext.vim'
+"Plug 'vim-scripts/dbext.vim'
 call plug#end()
 
 set title
@@ -165,49 +165,49 @@ let g:airline_powerline_fonts = 1
 "=============for vipsql===========
 " Starts an async psql job, prompting for the psql arguments.
 " Also opens a scratch buffer where output from psql is directed.
-noremap <leader>po :VipsqlOpenSession<CR>
+"noremap <leader>po :VipsqlOpenSession<CR>
 
 " Terminates psql (happens automatically if the scratch buffer is closed).
-noremap <silent> <leader>pk :VipsqlCloseSession<CR>
+"noremap <silent> <leader>pk :VipsqlCloseSession<CR>
 
 " In normal-mode, prompts for input to psql directly.
-nnoremap <leader>ps :VipsqlShell<CR>
+"nnoremap <leader>ps :VipsqlShell<CR>
 
 " In visual-mode, sends the selected text to psql.
-vnoremap <leader>ps :VipsqlSendSelection<CR>
+"vnoremap <leader>ps :VipsqlSendSelection<CR>
 
 " Sends the selected _range_ to psql.
-noremap <leader>pr :VipsqlSendRange<CR>
+"noremap <leader>pr :VipsqlSendRange<CR>
 
 " Sends the current line to psql.
-noremap <leader>pl :VipsqlSendCurrentLine<CR>
+"noremap <leader>pl :VipsqlSendCurrentLine<CR>
 
 " Sends the entire current buffer to psql.
-noremap <leader>pb :VipsqlSendBuffer<CR>
+"noremap <leader>pb :VipsqlSendBuffer<CR>
 
 " Sends `SIGINT` (C-c) to the psql process.
-noremap <leader>pc :VipsqlSendInterrupt<CR>
+"noremap <leader>pc :VipsqlSendInterrupt<CR>
 
 " Which command to run to get psql. Should be simply `psql` for most.
-let g:vipsql_psql_cmd = "psql"
+"let g:vipsql_psql_cmd = "psql"
 
 " The prompt to show when running `:VipsqlShell`
-let g:vipsql_shell_prompt = "> "
+"let g:vipsql_shell_prompt = "> "
 
 " What `vim` command to use when opening the scratch buffer
-let g:vipsql_new_buffer_cmd = "rightbelow split"
+"let g:vipsql_new_buffer_cmd = "rightbelow split"
 
 " Commands executed after opening the scratch buffer
 " Chain multiple commands together with `|` like so:
-let g:vipsql_new_buffer_config = 'setlocal buftype=nofile'
+"let g:vipsql_new_buffer_config = 'setlocal buftype=nofile'
 
 " Whether or not to print a separator in the output buffer when sending a new
 " command/query to psql.
-let g:vipsql_separator_enabled = 1 
+"let g:vipsql_separator_enabled = 1 
 
 " What that separator should look like.
-let g:vipsql_separator = '=========================================================================================================================================\n=============================================================================================================='
-let g:vipsql_auto_clear_enabled = 1
+"let g:vipsql_separator = '=========================================================================================================================================\n=============================================================================================================='
+"let g:vipsql_auto_clear_enabled = 1
 
 " Moverse al buffer siguiente con <líder> + l
  map <leader>l :bnext<CR>
@@ -228,3 +228,36 @@ let g:multi_cursor_use_default_mapping=0
  let g:multi_cursor_skip_key            = '<C-M>'
 let g:pipe2eval_map_key = '<Leader>mg'
 hi CursorLine guifg=NONE guibg=#2d3c45 ctermbg=237 gui=NONE term=NONE cterm=NONE
+
+"" operator mapping
+func! DBExe(...)
+	if !a:0
+		let &operatorfunc = matchstr(expand('<sfile>'), '[^. ]*$')
+		return 'g@'
+	endif
+	let sel_save = &selection
+	let &selection = "inclusive"
+	let reg_save = @@
+
+	if a:1 == 'char'	" Invoked from Visual mode, use gv command.
+		silent exe 'normal! gvy'
+	elseif a:1 == 'line'
+		silent exe "normal! '[V']y"
+	else
+		silent exe 'normal! `[v`]y'
+	endif
+
+	execute "DB " . @@
+
+	let &selection = sel_save
+	let @@ = reg_save
+endfunc
+
+xnoremap <expr> <Plug>(DBExe)     DBExe()
+nnoremap <expr> <Plug>(DBExe)     DBExe()
+nnoremap <expr> <Plug>(DBExeLine) DBExe() . '_'
+
+xmap <leader>ps  <Plug>(DBExe)
+nmap <leader>ps  <Plug>(DBExe)
+vmap <leader>ps <Plug>(DBExe)
+nmap <leader>pl <Plug>(DBExeLine)

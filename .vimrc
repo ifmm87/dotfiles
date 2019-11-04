@@ -10,10 +10,11 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Initialize plugin system
 Plug 'martingms/vipsql'
+Plug 'tpope/vim-dadbod'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
 Plug  'zweifisch/pipe2eval'
-"Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'tomasiser/vim-code-dark'
 Plug 'mhartington/oceanic-next'
 Plug 'troydm/zoomwintab.vim'  
@@ -51,15 +52,38 @@ set nowb
 set autoread
 set smartindent
 set noshowmode
-" Theme
- syntax enable
-" for vim d8
+"Theme
+set background=dark
+syntax enable
+"set termguicolors
+" for vim 8
  if (has("termguicolors"))
-  "set termguicolors
  endif
 
-colorscheme OceanicNext
+colorscheme dracula
+"colorscheme codedark
+"blue.vim
+"darkblue.vim
+"default.vim
+"delek.vim
+"desert.vim
+"elflord.vim
+"evening.vim
+"koehler.vim
+"morning.vim
+"murphy.vim
+"pablo.vim
+"peachpuff.vim
+"ron.vim
+"shine.vim
+"slate.vim
+"torte.vim
+"zellner.vim
 "navigation
+"============transparency=========================
+hi Normal ctermbg=NONE guibg=NONE
+hi NonText ctermbg=NONE guibg=NONE
+hi EndOfBuffer ctermfg=NONE guibg=NONE
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -203,7 +227,4 @@ let g:multi_cursor_use_default_mapping=0
  let g:multi_cursor_next_key            = '<C-m>'
  let g:multi_cursor_skip_key            = '<C-M>'
 let g:pipe2eval_map_key = '<Leader>mg'
-"============transparency=========================
-hi! Normal ctermbg=NONE guibg=NONE
-hi! NonText ctermbg=NONE guibg=NONE
-hi! EndOfBuffer ctermfg=NONE guibg=NONE
+hi CursorLine guifg=NONE guibg=#2d3c45 ctermbg=237 gui=NONE term=NONE cterm=NONE

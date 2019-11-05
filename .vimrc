@@ -13,15 +13,19 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-dadbod'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
-Plug  'zweifisch/pipe2eval'
+"Plug  'zweifisch/pipe2eval'
 Plug 'dracula/vim', { 'as': 'dracula' }
-"Plug 'tomasiser/vim-code-dark'
 Plug 'mhartington/oceanic-next'
 Plug 'troydm/zoomwintab.vim'  
+Plug 'tomasiser/vim-code-dark'
 Plug 'lifepillar/pgsql.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'lifepillar/vim-mucomplete' " Completion wrapper
-"Plug 'vim-scripts/dbext.vim'
+Plug 'Valloric/MatchTagAlways'
+Plug 'scrooloose/nerdcommenter'
+Plug 'alvan/vim-closetag'         
+Plug 'jiangmiao/auto-pairs'                                              " Auto cerrar html
+Plug 'vim-scripts/dbext.vim'
 call plug#end()
 
 set title
@@ -55,13 +59,20 @@ set noshowmode
 "Theme
 set background=dark
 syntax enable
+" This is only necessary if you use "set termguicolors".
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" fixes glitch? in colors when using vim with tmux
+set background=dark
+set t_Co=256
 "set termguicolors
 " for vim 8
  if (has("termguicolors"))
+   set termguicolors     " enable true colors support
  endif
-
-colorscheme dracula
 "colorscheme codedark
+colorscheme OceanicNext
 "blue.vim
 "darkblue.vim
 "default.vim
@@ -157,7 +168,24 @@ set completeopt+=noselect
 "
 let g:mucomplete#enable_auto_at_startup = 1
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
-let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
+let g:airline#extensions#tabline#fnamemod = ':t' 
+let g:airline#extensions#tabline#show_buffers = 1 " Mostrar sólo el nombre del archivo
+let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
+
+  let g:airline#extensions#tabline#buffer_idx_mode = 1
+  nmap <leader>1 <Plug>AirlineSelectTab1
+  nmap <leader>2 <Plug>AirlineSelectTab2
+  nmap <leader>3 <Plug>AirlineSelectTab3
+  nmap <leader>4 <Plug>AirlineSelectTab4
+  nmap <leader>5 <Plug>AirlineSelectTab5
+  nmap <leader>6 <Plug>AirlineSelectTab6
+  nmap <leader>7 <Plug>AirlineSelectTab7
+  nmap <leader>8 <Plug>AirlineSelectTab8
+  nmap <leader>9 <Plug>AirlineSelectTab9
+  nmap <leader>- <Plug>AirlineSelectPrevTab
+  nmap <leader>+ <Plug>AirlineSelectNextTab
+
+
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
 " set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)

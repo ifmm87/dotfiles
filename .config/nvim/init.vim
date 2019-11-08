@@ -195,7 +195,7 @@ let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como p
 let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
 let g:airline#extensions#tabline#show_buffers = 1 " Mostrar sólo el nombre del archivo
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
-
+let g:airline#extensions#ale#enabled = 1
   let g:airline#extensions#tabline#buffer_idx_mode = 1
   nmap <leader>1 <Plug>AirlineSelectTab1
   nmap <leader>2 <Plug>AirlineSelectTab2
@@ -232,7 +232,7 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'c': ['gcc', 'clangd', 'clang'], 'cpp': ['g++', 'clangd', 'clang'] ,'javascript': ['eslint', 'tsserver'], 'vue': ['eslint', 'vls']}                                  "Lint js with eslint
 let g:ale_fixers = {'cpp': ['clang-format'],'javascript': ['prettier', 'eslint' ], 'vue': ['eslint', 'vls']}                       "Fix eslint errors
-let g:ale_open_list = 'on_save'
+"let g:ale_open_list = 'on_save'
 let g:ale_keep_list_window_open = 0
 let g:ale_javascript_prettier_options = '--print-width 180 --trailing-comma none --single-quote' " Set max width to 100 chars for prettier
 let g:ale_lint_on_save = 1                                                      "Lint when saving a file
@@ -245,6 +245,8 @@ let g:ale_completion_max_suggestions = 500
 let g:ale_cpp_clang_executable = 'clang++8'
 let g:ale_cpp_clang_options = '-std=c++14 -Wall'
 let g:ale_cpp_clangd_executable = 'clangd'
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
  augroup CloseLoclistWindowGroup
     autocmd!
     autocmd QuitPre * if empty(&buftype) | lclose | endif
@@ -433,7 +435,7 @@ set completeopt+=preview
 set completeopt+=menuone
 set completeopt+=noinsert
 set shortmess+=c " turn off completion messages
-let g:mucomplete#enable_auto_at_startup = 1
+"let g:mucomplete#enable_auto_at_startup = 1
 " Use deoplete.
 "let g:deoplete#enable_at_startup = 1
 "========================================================
@@ -470,3 +472,7 @@ autocmd filetype java nnoremap <F7> :w <bar> !javac % && java -enableassertions 
 autocmd filetype python nnoremap <F7> :w <bar> !python % <CR>
 autocmd filetype perl nnoremap <F7> :w <bar> !perl % <CR>
 autocmd filetype go nnoremap <F7> :w <bar> !go build % && ./%:p <CR>
+
+"==========================================================================
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" : "\<TAB>"

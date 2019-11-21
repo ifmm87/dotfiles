@@ -42,8 +42,8 @@ st.font: hack-11;
 /* *.color15: #3c3836 */
 
 /* !! brogrammer: */
- *.foreground:  #d6dbe5
- *.background:  #131313
+*.foreground:  #d6dbe5
+*.background:  #131313
  *.color0:      #1f1f1f
  *.color8:      #d6dbe5
  *.color1:      #f81118

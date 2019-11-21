@@ -102,6 +102,7 @@ nnoremap <C-l> <C-w>l
 
 vnoremap <c-c> "+y<CR>
 nnoremap <c-v> "+p<CR>
+vnoremap <c-v> "+p<CR>
 nnoremap <leader>s :w<CR>
 " Usar <líder> + y para copiar al portapapeles
 vnoremap <leader>y "+y

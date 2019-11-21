@@ -1,9 +1,9 @@
 
 !! Transparency (0-255):
-st.alpha: 220
+*.alpha: 0.9
 
 !! Set a default font and font size as below:
-st.font: hack-11;
+*.font: hack-11;
 
 /* !! gruvbox: */
 /* *.color0: #1d2021 */
@@ -41,12 +41,31 @@ st.font: hack-11;
 /* *.color14: #427b58 */
 /* *.color15: #3c3836 */
 
-/* !! brogrammer: */
-*.foreground:  #d6dbe5
+ *.foreground:  #d6dbe5
 *.background:  #131313
- *.color0:      #1f1f1f
+ *.color0: #000000
+ *.color1: #ff5555 /*red*/
+ *.color2: #50fa7b
+ *.color3: #f1fa8c
+ *.color4: #bd93f9
+ *.color5: #ff79c6
+ *.color6: #8be9fd
+ *.color7: #bbbbbb
+ *.color8: #44475a
+ *.color9: #ff5555
+ *.color10: #50fa7b
+ *.color11: #f1fa8c
+ *.color12: #bd93f9
+ *.color13: #ff79c6 /*magenta*/
+ *.color14: #8be9fd /*cyan*/
+ *.color15: #ffffff /*white*/ 
+/* !! brogrammer: */
+/**
+ * .foreground:  #d6dbe5
+*.background:  #131313
+ *.color0:      #000000
  *.color8:      #d6dbe5
- *.color1:      #f81118
+ *.color1:      #ff5555
  *.color9:      #de352e
  *.color2:      #2dc55e
  *.color10:     #1dd361
@@ -61,7 +80,7 @@ st.font: hack-11;
  *.color7:      #d6dbe5
  *.color15:     #ffffff
  *.colorBD:     #d6dbe5
-
+*/
 /* ! base16 */
 /* *.color0:       #181818 */
 /* *.color1:       #ab4642 */

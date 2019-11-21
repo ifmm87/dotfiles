@@ -15,6 +15,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
 "Plug  'zweifisch/pipe2eval'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'joshdick/onedark.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'troydm/zoomwintab.vim'  
 Plug 'tomasiser/vim-code-dark'
@@ -71,25 +72,8 @@ set t_Co=256
  if (has("termguicolors"))
    set termguicolors     " enable true colors support
  endif
-"colorscheme codedark
-colorscheme OceanicNext
-"blue.vim
-"darkblue.vim
-"default.vim
-"delek.vim
-"desert.vim
-"elflord.vim
-"evening.vim
-"koehler.vim
-"morning.vim
-"murphy.vim
-"pablo.vim
-"peachpuff.vim
-"ron.vim
-"shine.vim
-"slate.vim
-"torte.vim
-"zellner.vim
+"colorscheme codecolorscheme onedarkdark
+colorscheme onedark
 "navigation
 "============transparency=========================
 hi Normal ctermbg=NONE guibg=NONE

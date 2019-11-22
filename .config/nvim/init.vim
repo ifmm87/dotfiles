@@ -42,6 +42,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'ipod825/vim-netranger' "Add maktaba and codefmt to the runtimepath.
 Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier','branch': 'release/1.x', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "=================================GENERAL SETTINGS======================
@@ -63,7 +64,7 @@ set hidden
 set ignorecase
 set smartcase
 set spelllang=en,es
-set showmatch
+set showmatc
 set splitbelow
 set splitright
 syntax on
@@ -72,6 +73,7 @@ set nobackup
 set nowb
 set autoread
 au CursorHold,FocusGained * checktime
+set encoding=UTF-8
 "au FocusGained,BufEnter * checktime
 set smartindent
 set background=dark  " Fondo del tema: dark/light

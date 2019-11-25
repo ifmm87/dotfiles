@@ -64,7 +64,6 @@ set hidden
 set ignorecase
 set smartcase
 set spelllang=en,es
-set showmatc
 set splitbelow
 set splitright
 syntax on

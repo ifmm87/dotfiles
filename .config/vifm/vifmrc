@@ -1,4 +1,5 @@
 " vim: filetype=vifm
+source ~/.config/vifm/vifmshortcuts
 
 set vicmd=$EDITOR
 set syscalls
@@ -72,5 +73,3 @@ filextype *.svg inkscape %f 2>/dev/null &
 filextype *.xcf gimp %f 2>/dev/null &
 
 set vifminfo=dhistory,chistory,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks
-map > :!vifmimg inc<CR>
-map < :!vifmimg dec<CR>

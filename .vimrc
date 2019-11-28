@@ -9,16 +9,18 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Initialize plugin system
-"Plug 'martingms/vipsql'
 Plug 'tpope/vim-dadbod'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
-"Plug  'zweifisch/pipe2eval'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'jacoborus/tender.vim'
+Plug 'nanotech/jellybeans.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'mhartington/oceanic-next'
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'troydm/zoomwintab.vim'  
 Plug 'tomasiser/vim-code-dark'
+Plug 'ayu-theme/ayu-vim'
 Plug 'lifepillar/pgsql.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'lifepillar/vim-mucomplete' " Completion wrapper
@@ -73,7 +75,9 @@ set t_Co=256
    set termguicolors     " enable true colors support
  endif
 "colorscheme codecolorscheme onedarkdark
-colorscheme onedark
+let ayucolor="dark"   " for dark version of theme
+colorscheme codedark
+"colorscheme palenight
 "navigation
 "============transparency=========================
 hi Normal ctermbg=NONE guibg=NONE

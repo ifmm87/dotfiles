@@ -1,10 +1,11 @@
-sw_volume: 72
+sw_volume: 56
 audio_device_state:1:Alsa for audio sound
-audio_device_state:1:toggle_visualizer
-state: stop
-current: 4
+audio_device_state:0:toggle_visualizer
+state: pause
+current: 6
+time: 27.479000
 random: 0
-repeat: 1
+repeat: 0
 single: 0
 consume: 0
 crossfade: 5
@@ -18,4 +19,8 @@ playlist_begin
 4:Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/05-Killpop.mp3
 5:Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/07-Lech.mp3
 6:Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/08-Goodbye.mp3
+7:Slipknot - .5_The Gray Chapter (DELUXE EDITION) [2014]/Disc 1/06-Skeptic.mp3
+8:Jenny_Of_Oldstones-_Game_Of_Thrones_-Legendado_GuDyVq79cas.mp3
+9:Five Finger Death Punch - Discography/2013 - The Wrong Side Of Heaven And The Righteous Side Of Hell, Volume 1/CD1 Album/02. Watch You Bleed.mp3
+10:Five Finger Death Punch - Discography/2013 - The Wrong Side Of Heaven And The Righteous Side Of Hell, Volume 1/CD1 Album/01. Lift Me Up (Featuring Rob Halford Of Judas Priest).mp3
 playlist_end

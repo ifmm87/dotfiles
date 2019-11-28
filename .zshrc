@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/imujica/.oh-my-zsh"
+export ZSH="/home/ivan/.oh-my-zsh"
 #!/bin/bash
 stty -ixon # Disable ctrl-s and ctrl-q.
 HISTSIZE= HISTFILESIZE= # Infinite history.
@@ -11,7 +11,7 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput se
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc" # Load shortcut aliases
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
-source /usr/share/nvm/init-nvm.sh
+#source /usr/share/nvm/init-nvm.sh
 xrdb ~/.Xresources
 
 # Set name of the theme to load --- if set to "random", it will
@@ -113,3 +113,5 @@ source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#00875f,bold'
 # Add forward-char widgets to PARTIAL_ACCEPT
 ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(forward-char)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

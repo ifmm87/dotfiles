@@ -5,18 +5,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'lifepillar/vim-mucomplete' " Completion wrapper
-Plug 'Shougo/echodoc.vim'
-" Plug 'w0rp/ale', { 'do': 'npm install -g prettier' }
-Plug 'dense-analysis/ale', { 'do': 'npm install -g prettier' }
-Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'haya14busa/incsearch.vim'
-Plug 'tpope/vim-repeat'
-Plug 'jiangmiao/auto-pairs'
-Plug 'airblade/vim-gitgutter'
+ Plug 'airblade/vim-gitgutter'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'pangloss/vim-javascript'
 Plug 'troydm/zoomwintab.vim'  
@@ -24,25 +16,16 @@ Plug 'cohama/lexima.vim'                                                        
 Plug 'alvan/vim-closetag'                                                       " Auto cerrar html
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript.jsx'] }
-Plug 'inkarkat/vim-SyntaxRange'
 Plug 'scrooloose/nerdcommenter'
 Plug 'othree/html5.vim'
-"Plug 'mhartington/oceanic-next'
 Plug 'tomasiser/vim-code-dark'
 Plug 'Valloric/MatchTagAlways'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'severin-lemaignan/vim-minimap'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
-Plug 'posva/vim-vue'
 "Optional:
-Plug 'digitaltoad/vim-pug'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'ipod825/vim-netranger' "Add maktaba and codefmt to the runtimepath.
-Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier','branch': 'release/1.x', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'ryanoasis/vim-devicons'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 "=================================GENERAL SETTINGS======================
@@ -115,7 +98,6 @@ nnoremap <Leader>s :w<CR>
 nnoremap <Leader>& :vsp<CR>
 nnoremap <Leader>" :sp<CR>
 nnoremap <Leader>bb :Buffers<CR>
-nnoremap <Leader>bt :BTags<CR>
 nnoremap <Leader>bh :History<CR>
 " Reload init.vim
 noremap <Leader>r :so %<CR>
@@ -126,14 +108,11 @@ nnoremap <leader>% :MtaJumpToOtherTag<cr>
 " Clear search highlight
 nnoremap <Leader><space> :noh<CR>
 " Nerdtree
-nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <F3> :NERDTreeFind<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <F4>NERDTreeFind<CR>
 "para la indentacion
-map <leader>i gg=G'' <CR>
+" map <leader>i gg=G'' <CR>
 " Corregir errores de ALEFix
-noremap <Leader>fe :ALEFix<CR>
-nmap <silent> <leader>fk :ALENext<cr>
-nmap <silent> <leader>fj :ALEPrevious<cr>
 nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
 "==========CONTROL===MAPPINGS====================================
 " Map save to Ctrl + S
@@ -144,11 +123,11 @@ imap <c-s> <Esc>:w<CR>
 " Indenting in visual mode
 xnoremap <s-tab> <gv
 xnoremap <tab> >gv
+nnoremap <tab> >>
+nnoremap <s-tab> <<
 " // The switch of the Source Explorer 
 "nmap <F3> :SrcExplToggle<CR> 
 " Maps for indentation in normal mode
-nnoremap <tab> >>
-nnoremap <s-tab> <<
 "search file
 map <c-p> :Files<CR>
 " Maps requeridos
@@ -160,55 +139,39 @@ nnoremap - <c-w>5<
 "tab navigation
 map <A-left> :tabp<CR>
 map <A-right> :tabn<CR>
-"==================lint=========================
-nnoremap <F4> :!npm run lint<CR>
-nnoremap <F5> :!npm run lint -- --fix<CR>
 " Move selected lines up and down
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 "buscador
-map <c-f> :Ag<CR>
+map <leader>ag :Ag<CR>
 "navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-"=================================================================================
-"=================================================================================
-let g:multi_cursor_use_default_mapping=0
-
-" Default mapping
-let g:multi_cursor_quit_key='<Esc>'
-let g:multi_cursor_next_key            = '<C-m>'
-let g:multi_cursor_skip_key            = '<C-M>'
-"===============================LSP client====================================
-" Required for operations modifying multiple buffers like rename.
-" set hidden
 "=====================================NERDTREE====================
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
 
 let g:NERDTreeIgnore = [
-			\ '\.pyc$', '^__pycache__$', '^venv$',
-			\ '^tags$', 'node_modules', '\.o$'
+			\ '\.pyc$', '^__pycache__$', '^venv$'
 			\]
 
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
 let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
 let g:airline#extensions#tabline#show_buffers = 1 " Mostrar sólo el nombre del archivo
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
-let g:airline#extensions#ale#enabled = 1
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
-  nmap <leader>1 <Plug>AirlineSelectTab1
-  nmap <leader>2 <Plug>AirlineSelectTab2
-  nmap <leader>3 <Plug>AirlineSelectTab3
-  nmap <leader>4 <Plug>AirlineSelectTab4
-  nmap <leader>5 <Plug>AirlineSelectTab5
-  nmap <leader>6 <Plug>AirlineSelectTab6
-  nmap <leader>7 <Plug>AirlineSelectTab7
-  nmap <leader>8 <Plug>AirlineSelectTab8
-  nmap <leader>9 <Plug>AirlineSelectTab9
-  nmap <leader>- <Plug>AirlineSelectPrevTab
-  nmap <leader>+ <Plug>AirlineSelectNextTab
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
 set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
@@ -217,56 +180,6 @@ let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
 "============================================================
 " Invertir direccion de navegacion (de arriba a abajo)
 let g:SuperTabDefaultCompletionType = '<c-n>'
-"=====================================
-" Activar echodoc al iniciar Neovim
-let g:echodoc_enable_at_startup = 1
-"========ALE======================================
-noremap <F12> :ALEGoToDefinition<CR>
-noremap <F11> :ALERename<CR>
-noremap <Leader>fe :ALEFix<CR>
-noremap <Leader>fr :ALEFindReferences<CR>
-" Mostrar mejor mensajes de error
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_lint_on_text_changed = 0
-let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_linters = {'c': ['gcc', 'clangd', 'clang'], 'cpp': ['g++', 'clangd', 'clang'] ,'javascript': ['eslint', 'tsserver'], 'vue': ['eslint', 'vls']}                                  "Lint js with eslint
-let g:ale_fixers = {'cpp': ['clang-format'],'javascript': ['prettier', 'eslint' ], 'vue': ['eslint', 'vls']}                       "Fix eslint errors
-"let g:ale_open_list = 'on_save'
-let g:ale_keep_list_window_open = 0
-let g:ale_javascript_prettier_options = '--print-width 180 --trailing-comma none --single-quote' " Set max width to 100 chars for prettier
-let g:ale_lint_on_save = 1                                                      "Lint when saving a file
-let g:ale_sign_error = '✖'                                                      "Lint error sign
-let g:ale_sign_warning = '⚠'                                                    "Lint warning sign
-let g:ale_statusline_format =[' %d E ', ' %d W ', '']  
-let g:ale_set_highlights = 1
-let g:ale_completion_enabled = 1
-let g:ale_completion_max_suggestions = 500
-let g:ale_cpp_clang_executable = 'clang++8'
-let g:ale_cpp_clang_options = '-std=c++14 -Wall'
-let g:ale_cpp_clangd_executable = 'clangd'
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
- augroup CloseLoclistWindowGroup
-    autocmd!
-    autocmd QuitPre * if empty(&buftype) | lclose | endif
-  augroup END
-highlight ALEError ctermbg=DarkMagenta cterm=underline
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-
-set statusline=%{LinterStatus()}
 "=================================
 " Ejecutar comandos con alt-enter :Commands
 let g:fzf_commands_expect = 'alt-enter'
@@ -285,11 +198,6 @@ function! NERDTreeHighlightFile(extension, fg)                                  
   exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s.*\.\('. substitute(a:extension,'_','\\|','') .'\)$#'
   exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg=none ctermfg='. a:fg .' guibg=none guifg='. a:fg
 endfunction
-call NERDTreeHighlightFile('js_py', 'LightGreen')                               "NERDTress File highlighting
-call NERDTreeHighlightFile('vue', 'LightMagenta')
-call NERDTreeHighlightFile('json', 'LightYellow')
-call NERDTreeHighlightFile('html_css', 'LightCyan')
-call NERDTreeHighlightFile('md', 'LightCyan')
 let g:NERDTreeChDirMode = 0                                                     "Always change the root directory
 let g:NERDTreeMinimalUI = 1                                                     "Disable help text and bookmark title
 let g:NERDTreeShowHidden = 1                                                    "Show hidden files in NERDTree
@@ -337,35 +245,6 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'jinja' : 1,
     \}
-"======================================================
-" Autocompletado para neosnippet
-let g:neosnippet#snippets_directory = ['~/.config/nvim/snippets'] 
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-space>     <Plug>(neosnippet_expand_or_jump)
-smap <C-space>     <Plug>(neosnippet_expand_or_jump)
-xmap <c-space>     <Plug>(neosnippet_expand_target)
-" snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
- let g:UltiSnipsEditSplit="vertical"
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-"========================function for fix deoplete==============
-function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
-endfunction
-
-function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
-endfunction 
 "==============trailing spaces red color=========================
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -377,68 +256,11 @@ autocmd BufWinLeave * call clearmatches()
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
 hi! EndOfBuffer ctermfg=NONE guibg=NONE
-"===================prettier==============================
-" max line length that prettier will wrap on
-" " Prettier default: 80
-let g:prettier#config#print_width = 180
-"
-" " number of spaces per indentation level
-" " Prettier default: 2
-let g:prettier#config#tab_width = 2
-"
-" " use tabs over spaces
-" " Prettier default: false
-let g:prettier#config#use_tabs = 'false'
-"
-" " print semicolons
-" " Prettier default: true
-let g:prettier#config#semi = 'true'
-"
-" " single quotes over double quotes
-" " Prettier default: false
-let g:prettier#config#single_quote = 'true'
-"
-" " print spaces between brackets
-" " Prettier default: true
-let g:prettier#config#bracket_spacing = 'true'
-"
-" " put > on the last line instead of new line
-" " Prettier default: false
-let g:prettier#config#jsx_bracket_same_line = 'true'
-"
-" " avoid|always
-" " Prettier default: avoid
-let g:prettier#config#arrow_parens = 'avoid'
-"
-" " none|es5|all
-" " Prettier default: none
-let g:prettier#config#trailing_comma = 'none'
-"
-" " flow|babylon|typescript|css|less|scss|json|graphql|markdown
-" " Prettier default: babylon
-let g:prettier#config#parser = 'flow'
-"
-" " cli-override|file-override|prefer-file
-"let g:prettier#config#config_precedence = 'prefer-file'
-let g:prettier#config#config_precedence = 'prefer-file'
-"
-" " always|never|preserve
-let g:prettier#config#prose_wrap = 'preserve'
-"
-" " css|stri
-"
-" ct|ignore
-let g:prettier#config#html_whitespace_sensitivity = 'css'
-let g:prettier#partial_format=1
-"============================================
 " autocompletion
 set completeopt+=preview
 set completeopt+=menuone
 set completeopt+=noinsert
 set shortmess+=c " turn off completion messages
-"let g:mucomplete#enable_auto_at_startup = 1
-" Use deoplete.
-"let g:deoplete#enable_at_startup = 1
 "========================================================
 let g:ft = ''
 function! NERDCommenter_before()
@@ -459,21 +281,133 @@ function! NERDCommenter_after()
      let g:ft = ''
    endif
  endfunction
-"========================para volver a leer un archivo vue=======
-"autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css 
+" for the wiseass vue
 let g:vue_disable_pre_processors=1
 autocmd FileType vue syntax sync fromstart
-"autocmd filetype python nnoremap <F7> :w <bar> exec '!python '.shellescape('%')<CR>
+" for executing c program
 autocmd filetype c nnoremap <F7> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F7> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r') <CR>
-
-"autocmd filetype cpp nnoremap <F7> :w <bar> !clear && g++ -std=gnu++14 -O2 % -o %:p:h/%:t:r.exe && ./%:r.exe<CR>
 autocmd filetype c nnoremap <F7> :w <bar> !gcc -std=c99 -lm % -o %:p:h/%:t:r.out && ./%:r.out<CR>
-autocmd filetype java nnoremap <F7> :w <bar> !javac % && java -enableassertions %:p <CR>
-autocmd filetype python nnoremap <F7> :w <bar> !python % <CR>
-autocmd filetype perl nnoremap <F7> :w <bar> !perl % <CR>
-autocmd filetype go nnoremap <F7> :w <bar> !go build % && ./%:p <CR>
 
-"==========================================================================
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json',
+  \ ]
+"============================COC===============================================
+" Some servers have issues with backup files, see #649
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" always show signcolumns
+set signcolumn=yes
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> <F12> <Plug>(coc-definition)
+nmap <silent> <F11> <Plug>(coc-type-definition)
+nmap <silent> <F10> <Plug>(coc-implementation)
+nmap <silent> <leader>fr <Plug>(coc-references)
+
+" Use leader ho to show documentation in preview window
+nnoremap <silent> <leader>ho :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <F2> <Plug>(coc-rename)
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" Remap for format selected region
+xmap <leader>cf  <Plug>(coc-format-selected)
+nmap <leader>cf  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <leader>el  :<C-u>CocList diagnostics<cr>
+" Find symbol of current document
+nnoremap <silent> <leader>ol  :<C-u>CocList outline<cr>
+" " Do default action for next item.
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" " Do default action for previous item.
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" " Resume latest coc list
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>hi CocUnderline gui=undercurl term=undercurl
+hi CocErrorHighlight ctermfg=red  guifg=#c4384b gui=undercurl term=undercurl
+hi CocWarningHighlight ctermfg=yellow guifg=#c4ab39 gui=undercurl term=undercurl

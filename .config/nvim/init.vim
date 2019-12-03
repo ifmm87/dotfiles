@@ -109,7 +109,7 @@ nnoremap <leader>% :MtaJumpToOtherTag<cr>
 nnoremap <Leader><space> :noh<CR>
 " Nerdtree
 nnoremap <F3> :NERDTreeToggle<CR>
-nnoremap <F4>NERDTreeFind<CR>
+nnoremap <F4> :NERDTreeFind<CR>
 "para la indentacion
 " map <leader>i gg=G'' <CR>
 " Corregir errores de ALEFix

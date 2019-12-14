@@ -76,8 +76,8 @@ set t_Co=256
  endif
 "colorscheme codecolorscheme onedarkdark
 let ayucolor="dark"   " for dark version of theme
-colorscheme codedark
-"colorscheme palenight
+" colorscheme codedark
+colorscheme palenight
 "navigation
 "============transparency=========================
 hi Normal ctermbg=NONE guibg=NONE

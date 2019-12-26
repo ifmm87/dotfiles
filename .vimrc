@@ -75,9 +75,7 @@ set t_Co=256
    set termguicolors     " enable true colors support
  endif
 "colorscheme codecolorscheme onedarkdark
-let ayucolor="dark"   " for dark version of theme
-colorscheme codedark
-"colorscheme palenight
+colorscheme palenight
 "navigation
 "============transparency=========================
 hi Normal ctermbg=NONE guibg=NONE
@@ -91,6 +89,7 @@ nnoremap <C-l> <C-w>l
 vnoremap <c-c> "+y<CR>
 nnoremap <c-v> "+p<CR>
 vnoremap <c-v> "+p<CR>
+inoremap <c-v> <Esc>"+p<CR>
 nnoremap <leader>s :w<CR>
 " Usar <líder> + y para copiar al portapapeles
 vnoremap <leader>y "+y
@@ -245,7 +244,6 @@ let g:multi_cursor_use_default_mapping=0
  let g:multi_cursor_skip_key            = '<C-M>'
 let g:pipe2eval_map_key = '<Leader>mg'
 hi CursorLine guifg=NONE guibg=#2d3c45 ctermbg=237 gui=NONE term=NONE cterm=NONE
-
 "" operator mapping
 func! DBExe(...)
 	if !a:0

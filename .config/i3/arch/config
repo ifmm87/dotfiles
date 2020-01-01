@@ -29,6 +29,8 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec $term
+#bindsym $mod+Shift+Return exec $term --role=floating_term
+bindsym $mod+Shift+Return	exec --no-startup-id float-runner st
 
 # kill focused window
 bindsym $mod+q kill
@@ -219,10 +221,15 @@ for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+for_window [class="floating_term"] floating enable
 
+for_window [instance="dropdown_tmuxdd"] resize set 625 450
+for_window [instance="dropdown_dropdowncalc"] resize set 800 300
+for_window [instance="dropdown_tmuxdd"] border pixel 3
+for_window [instance="dropdown_dropdowncalc"] border pixel 2
+for_window [instance="dropdown_*"] move position center
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 

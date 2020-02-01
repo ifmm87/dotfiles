@@ -246,7 +246,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp2s0
+interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -347,15 +347,15 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 1000
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
+animation-discharging-0 = 
+;animation-discharging-1 = 
+;animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 750
 

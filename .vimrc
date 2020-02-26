@@ -123,8 +123,8 @@ map <leader>t :tabnew<CR>
 " Clear search highlight
 nnoremap <Leader><space> :noh<CR>
 " Nerdtree
-nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <F3> :NERDTreeFind<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <F4> :NERDTreeFind<CR>
 "para la indentacion
 "==========CONTROL===MAPPINGS====================================
 " Map save to Ctrl + S

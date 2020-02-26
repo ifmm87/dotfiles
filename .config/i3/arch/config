@@ -7,7 +7,7 @@ set $term  --no-startup-id st
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
-exec_always "setxkbmap -layout latam"
+exec_always --no-startup-id dunst
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 new_window pixel 2 
 new_float normal
@@ -60,7 +60,7 @@ bindsym $mod+Ctrl+m exec $term -e 'pulsemixer'
 # Start Applications
 bindsym $mod+Ctrl+b exec $term -e 'bmenu'
 bindsym $mod+F2 exec palemoon
-bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F3 exec nemo
 bindsym $mod+F4 exec $term ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec $term -e 'mocp'
@@ -440,7 +440,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 # colors
 #class                 border  backgr. text    indicator child_border
-client.focused          #ff0000 #285577 #ffffff #ffff00   #ff0000
+client.focused          #0da3a7 #285577 #ffffff #ffffff   #0da3a7
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000

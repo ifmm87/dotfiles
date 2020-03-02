@@ -436,8 +436,8 @@ bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
 # Sreen brightness controls
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 # colors
 #class                 border  backgr. text    indicator child_border
 client.focused          #0da3a7 #285577 #ffffff #ffffff   #0da3a7

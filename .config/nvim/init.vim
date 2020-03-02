@@ -34,6 +34,8 @@ set number
 set relativenumber                                                              "Show numbers relative to current line
 set history=500                                                                 "Store lots of :cmdline history
 "set fileencoding=utf-8 
+set cmdheight=1
+set cmdwinheight=3
 set mouse=a
 set nowrap
 set cursorline

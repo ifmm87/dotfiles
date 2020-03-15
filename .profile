@@ -2,7 +2,7 @@
 # Profile file. Runs on login.
 
 # Adds `~/.scripts` and all subdirectories to $PATH
-export PATH="$PATH:$(du "$HOME/.scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+#export PATH="$PATH:$(du "$HOME/.scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export EDITOR="vim"
 export TERMINAL="st"
 export BROWSER="firefox"
@@ -14,9 +14,10 @@ export SUDO_ASKPASS="$HOME/.scripts/tools/dmenupass"
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export JAVA_HOME="/opt/jdk1.8.0_221"
+export ZSH="~/.oh-my-zsh"
 PATH=$JAVA_HOME/bin:$PATH
+PATH=$ZSH:$PATH
 export PATH
-export PATH="$PATH:/home/imujica/vault-dir"
 # less/man colors
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"; a="${a%_}"

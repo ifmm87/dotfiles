@@ -23,7 +23,11 @@ export cpu_prefix_a="#ff0000"
 export mem_prefix_a="#ff0000"
 export bat_prefix_a="#ff0000"
 export time_a="#ff0000"
+# Wait until the processes have been shut down
+while pgrep -x polybar >/dev/null; do sleep 1; done
+
 # Launch Polybar, using default config location ~/.config/polybar/config
-polybar example &
+polybar example1 &
+polybar example2 &
 
 echo "Polybar launched..."

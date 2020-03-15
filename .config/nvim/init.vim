@@ -120,6 +120,7 @@ nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
 " Map save to Ctrl + S
 vnoremap <c-c> "+y<CR>
 nnoremap <c-v> "+p<CR>
+vnoremap <c-v> "+p<CR>
 map <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>
 " Indenting in visual mode

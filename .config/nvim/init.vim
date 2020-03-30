@@ -121,6 +121,7 @@ nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
 vnoremap <c-c> "+y<CR>
 nnoremap <c-v> "+p<CR>
 vnoremap <c-v> "+p<CR>
+imap <c-v> <Esc>"+p<CR>
 map <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>
 " Indenting in visual mode
@@ -414,3 +415,13 @@ nnoremap <silent> <leader>ol  :<C-u>CocList outline<cr>
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>hi CocUnderline gui=undercurl term=undercurl
 hi CocErrorHighlight ctermfg=red  guifg=#c4384b gui=undercurl term=undercurl
 hi CocWarningHighlight ctermfg=yellow guifg=#c4ab39 gui=undercurl term=undercurl
+"====================================================
+let g:OmniSharp_highlight_groups = {
+\ 'csUserIdentifier': [
+\   'constant name', 'enum member name', 'field name', 'identifier',
+\   'local name', 'parameter name', 'property name', 'static symbol'],
+\ 'csUserInterface': ['interface name'],
+\ 'csUserMethod': ['extension method name', 'method name'],
+\ 'csUserType': ['class name', 'enum name', 'namespace name', 'struct name']
+\}
+let g:OmniSharp_highlight_types = 3

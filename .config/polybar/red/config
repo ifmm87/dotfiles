@@ -18,10 +18,10 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #000000
+background = #aa690013
 background-alt = #b30000
 ;foreground = ${xrdb:color7:#222}
-foreground = #ff0000
+foreground = #ffffff
 foreground-alt = #555
 primary = #ff0000
 secondary = #ff0000
@@ -49,7 +49,7 @@ font-1 =  Siji:style=Regular
 font-0 = "Hack:pixelsize=12;0"
 modules-left = i3
 modules-center = title
-modules-right = mpd pulseaudio xkeyboard wlan temperature memory date 
+modules-right = mpd pulseaudio xkeyboard wlan battery temperature memory date 
 tray-position = right
 tray-padding = 1
 ;tray-background = #0063ff
@@ -236,7 +236,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlan0
+interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>

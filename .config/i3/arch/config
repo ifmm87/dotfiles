@@ -9,7 +9,7 @@ set $term  --no-startup-id st
 
 exec_always --no-startup-id dunst
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 2 
+new_window pixel 3 
 new_float normal
 
 # Hide borders
@@ -377,7 +377,7 @@ set_from_resource $term_color15    color15
 ### settings for i3-gaps: ###
 #############################
 
-gaps inner 14
+gaps inner 10
 gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -445,11 +445,11 @@ bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 # colors
 #class                 border  backgr. text    indicator child_border
-client.focused          #0da3a7 #285577 #ffffff #ffffff   #0da3a7
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.focused          #b30000 #285577 #ffffff #EE82EE   #b30000
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #690013
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.urgent           #2f343a #900000 #EE82EE #900000   #900000
+client.placeholder      #EE82EE #0c0c0c #ffffff #EE82EE   #0c0c0c
 
 client.background       #ffffff
 

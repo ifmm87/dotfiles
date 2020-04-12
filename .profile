@@ -14,7 +14,7 @@ export SUDO_ASKPASS="$HOME/.scripts/tools/dmenupass"
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export JAVA_HOME="/opt/jdk1.8.0_221"
-export ZSH="~/.oh-my-zsh"
+export ZSH="/home/ivan/.oh-my-zsh"
 PATH=$JAVA_HOME/bin:$PATH
 PATH=$ZSH:$PATH
 export PATH

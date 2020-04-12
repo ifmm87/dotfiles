@@ -3,8 +3,11 @@
 *.alpha: 0.9
 
 !! Set a default font and font size as below:
-*.font: hack-13;
-
+*.font: hack-12;
+rofi.combi-modi:    window,drun,ssh
+rofi.theme:         sidebar
+rofi.font:          hack 14
+rofi.modi:          combi
 /* !! gruvbox: */
 /* *.color0: #1d2021 */
 /* *.color1: #cc241d */

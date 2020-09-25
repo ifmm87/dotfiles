@@ -21,14 +21,14 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'troydm/zoomwintab.vim'  
 Plug 'tomasiser/vim-code-dark'
 Plug 'ayu-theme/ayu-vim'
-Plug 'lifepillar/pgsql.vim'
+"Plug 'lifepillar/pgsql.vim'
 Plug 'haya14busa/incsearch.vim'
-Plug 'lifepillar/vim-mucomplete' " Completion wrapper
+"Plug 'lifepillar/vim-mucomplete' " Completion wrapper
 Plug 'Valloric/MatchTagAlways'
 Plug 'scrooloose/nerdcommenter'
 Plug 'alvan/vim-closetag'         
 Plug 'jiangmiao/auto-pairs'                                              " Auto cerrar html
-Plug 'vim-scripts/dbext.vim'
+"Plug 'vim-scripts/dbext.vim'
 call plug#end()
 
 set title

@@ -58,7 +58,8 @@ bindsym $mod+Ctrl+m exec $term -e 'pulsemixer'
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-
+# Toggle keyboard layout
+bindsym $mod+o exec "switch-klayout"
 # Start Applications
 bindsym $mod+Ctrl+b exec $term -e 'bmenu'
 bindsym $mod+F2 exec palemoon

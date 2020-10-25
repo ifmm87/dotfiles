@@ -313,7 +313,7 @@ exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
 # exec_always --no-startup-id sbxkb
 #exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id xautolock -time 20 -locker blurlock
 #exec_always --no-startup-id ff-theme-util
 #exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -450,11 +450,11 @@ bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 # colors
 #class                 border  backgr. text    indicator child_border
-client.focused          #ED5858 #285577 #ffffff #EE82EE   #ED5858
-client.focused_inactive #ED5858 #5f676a #ffffff #484e50   #690013
+client.focused          #559938 #285577 #ffffff #F97E33  #559938
+client.focused_inactive #559938 #5f676a #ffffff #484e50   #690013
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #EE82EE #900000   #900000
-client.placeholder      #EE82EE #0c0c0c #ffffff #EE82EE   #0c0c0c
+client.placeholder      #559938 #0c0c0c #ffffff #EE82EE   #559938
 
 client.background       #ffffff
 

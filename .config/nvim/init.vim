@@ -304,10 +304,6 @@ let g:coc_global_extensions = [
 "============================COC===============================================
 " Some servers have issues with backup files, see #649
 set nowritebackup
-
-" Better display for messages
-set cmdheight=2
-
 " always show signcolumns
 set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.

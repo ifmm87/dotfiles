@@ -5,13 +5,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'haya14busa/incsearch.vim'
- Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'pangloss/vim-javascript'
-Plug 'troydm/zoomwintab.vim'  
+Plug 'troydm/zoomwintab.vim'
 Plug 'cohama/lexima.vim'                                                        " Auto cerrar (, {
 Plug 'alvan/vim-closetag'                                                       " Auto cerrar html
 Plug 'terryma/vim-multiple-cursors'
@@ -302,8 +302,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-python',
   \ 'coc-r-lsp',
-  \ 'coc-vetur',
-
+  \ 'coc-vetur'
   \ ]
 "============================COC===============================================
 " Some servers have issues with backup files, see #649

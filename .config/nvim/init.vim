@@ -300,6 +300,10 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json',
+  \ 'coc-python',
+  \ 'coc-r-lsp',
+  \ 'coc-vetur',
+
   \ ]
 "============================COC===============================================
 " Some servers have issues with backup files, see #649

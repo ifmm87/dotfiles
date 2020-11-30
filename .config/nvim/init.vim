@@ -26,6 +26,7 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
+Plug 'JamshedVesuna/vim-markdown-preview'
 call plug#end()
 
 "=================================GENERAL SETTINGS======================
@@ -425,3 +426,6 @@ let g:OmniSharp_highlight_groups = {
 \ 'csUserType': ['class name', 'enum name', 'namespace name', 'struct name']
 \}
 let g:OmniSharp_highlight_types = 3
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_github=1

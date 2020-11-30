@@ -1,6 +1,6 @@
 
 !! Transparency (0-255):
-*.alpha: 0.9
+*.alpha: 0.8
 
 !! Set a default font and font size as below:
 *.font: hack-12;

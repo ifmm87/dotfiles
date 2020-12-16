@@ -34,7 +34,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return	exec --no-startup-id float-runner st
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id "~/.config/rofi/bin/launcher_colorful" 
@@ -114,7 +114,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+#bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -124,7 +124,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # toggle sticky
-bindsym $mod+Shift+s sticky toggle
+bindsym $mod+w sticky toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -244,7 +244,7 @@ bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+q exec "~/.config/rofi/bin/applet_powermenu"
+#bindsym $mod+Shift+q exec "~/.config/rofi/bin/applet_powermenu"
 bindsym $mod+Shift+p exec "~/.config/rofi/bin/applet_mpd"
 
 # Set shut down, restart and locking features

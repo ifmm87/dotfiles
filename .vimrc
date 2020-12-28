@@ -12,23 +12,18 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-dadbod'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'jacoborus/tender.vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'troydm/zoomwintab.vim'  
-Plug 'tomasiser/vim-code-dark'
 Plug 'ayu-theme/ayu-vim'
-"Plug 'lifepillar/pgsql.vim'
 Plug 'haya14busa/incsearch.vim'
-"Plug 'lifepillar/vim-mucomplete' " Completion wrapper
 Plug 'Valloric/MatchTagAlways'
 Plug 'scrooloose/nerdcommenter'
 Plug 'alvan/vim-closetag'         
 Plug 'jiangmiao/auto-pairs'                                              " Auto cerrar html
-"Plug 'vim-scripts/dbext.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 set title
@@ -173,58 +168,33 @@ let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtr
   nmap <leader>- <Plug>AirlineSelectPrevTab
   nmap <leader>+ <Plug>AirlineSelectNextTab
 
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-python',
+  \ 'coc-sql'
+  \ ]
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
-" set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
-"bus
-"=============for vipsql===========
-" Starts an async psql job, prompting for the psql arguments.
-" Also opens a scratch buffer where output from psql is directed.
-"noremap <leader>po :VipsqlOpenSession<CR>
-
-" Terminates psql (happens automatically if the scratch buffer is closed).
-"noremap <silent> <leader>pk :VipsqlCloseSession<CR>
-
-" In normal-mode, prompts for input to psql directly.
-"nnoremap <leader>ps :VipsqlShell<CR>
-
-" In visual-mode, sends the selected text to psql.
-"vnoremap <leader>ps :VipsqlSendSelection<CR>
-
-" Sends the selected _range_ to psql.
-"noremap <leader>pr :VipsqlSendRange<CR>
-
-" Sends the current line to psql.
-"noremap <leader>pl :VipsqlSendCurrentLine<CR>
-
-" Sends the entire current buffer to psql.
-"noremap <leader>pb :VipsqlSendBuffer<CR>
-
-" Sends `SIGINT` (C-c) to the psql process.
-"noremap <leader>pc :VipsqlSendInterrupt<CR>
-
-" Which command to run to get psql. Should be simply `psql` for most.
-"let g:vipsql_psql_cmd = "psql"
-
-" The prompt to show when running `:VipsqlShell`
-"let g:vipsql_shell_prompt = "> "
-
-" What `vim` command to use when opening the scratch buffer
-"let g:vipsql_new_buffer_cmd = "rightbelow split"
-
-" Commands executed after opening the scratch buffer
-" Chain multiple commands together with `|` like so:
-"let g:vipsql_new_buffer_config = 'setlocal buftype=nofile'
-
-" Whether or not to print a separator in the output buffer when sending a new
-" command/query to psql.
-"let g:vipsql_separator_enabled = 1 
-
-" What that separator should look like.
-"let g:vipsql_separator = '=========================================================================================================================================\n=============================================================================================================='
-"let g:vipsql_auto_clear_enabled = 1
-
 " Moverse al buffer siguiente con <líder> + l
  map <leader>l :bnext<CR>
 " " Moverse al buffer anterior con <líder> + j

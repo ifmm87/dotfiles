@@ -10,7 +10,7 @@ exec setxkbmap -layout us
 
 exec_always --no-startup-id dunst
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 3 
+new_window pixel 1 
 new_float normal
 
 # Hide borders
@@ -18,7 +18,7 @@ hide_edge_borders both
 
 # change borders
 bindsym $mod+u border none
-bindsym $mod+y border pixel 2
+bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -37,7 +37,7 @@ bindsym $mod+Shift+Return	exec --no-startup-id float-runner st
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id "~/.config/rofi/bin/launcher_colorful" 
+bindsym $mod+d exec --no-startup-id "~/.config/rofi/launchers/colorful/launcher.sh" 
 
 #444 launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -292,10 +292,13 @@ mode "resize" {
 bindsym $mod+x exec --no-startup-id blurlock
 # For Music
 # hide/unhide i3status bar
-bindsym $mod+Shift+m exec ncmpcpp 
+bindsym $mod+Shift+m exec $TERM ncmpcpp 
 bindsym $mod+p exec mpc toggle
-bindsym $mod+Shift+less exec mpc next
-bindsym $mod+less exec mpc prev
+bindsym $mod+period exec mpc next
+bindsym $mod+Shift+period exec mpc repeat
+bindsym $mod+comma exec mpc prev
+bindsym $mod+bracketleft exec mpc seek -10
+bindsym $mod+bracketright exec mpc seek +10
 # for hide polybar
 bindsym $mod+m exec polybar-msg cmd toggle
 # Autostart applications
@@ -449,8 +452,8 @@ bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 # colors
 #class                 border  backgr. text    indicator child_border
-client.focused          #559938 #285577 #ffffff #F97E33  #559938
-client.focused_inactive #559938 #5f676a #ffffff #484e50   #690013
+client.focused          #FF5733 #285577 #ffffff #F97E33  #FF5733
+client.focused_inactive #FF5733 #5f676a #ffffff #484e50   #690013
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #EE82EE #900000   #900000
 client.placeholder      #559938 #0c0c0c #ffffff #EE82EE   #559938

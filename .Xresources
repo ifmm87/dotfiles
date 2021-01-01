@@ -1,9 +1,9 @@
 
 !! Transparency (0-255):
-*.alpha: 0.8
+*.alpha: 0.9
 
 !! Set a default font and font size as below:
-*.font: hack-12;
+*.font: hack-11;
 rofi.combi-modi:    window,drun,ssh
 rofi.theme:         sidebar
 rofi.font:          hack 14
@@ -49,15 +49,15 @@ rofi.modi:          combi
  *.color0: #000000
  *.color1: #ff5555 /*red*/
  *.color2: #50fa7b
- *.color3: #f1fa8c
- *.color4: #bd93f9
+ *.color3: #f1fa8c /*verde*/
+ *.color4: #bd93f9 /*violeta*/
  *.color5: #ff79c6
  *.color6: #8be9fd
- *.color7: #bbbbbb
- *.color8: #44475a
- *.color9: #ff5555
+ *.color7: #bbbbbb /*plomo*/
+ *.color8: #44475a /*plomo oscuro*/
+ *.color9: #ff5555 /*rojo claro*/
  *.color10: #50fa7b
- *.color11: #f1fa8c
+ *.color11: #f1fa8c /*verde*/
  *.color12: #bd93f9
  *.color13: #ff79c6 /*magenta*/
  *.color14: #8be9fd /*cyan*/

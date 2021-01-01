@@ -11,10 +11,10 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'troydm/zoomwintab.vim'
 Plug 'cohama/lexima.vim'                                                        " Auto cerrar (, {
 Plug 'alvan/vim-closetag'                                                       " Auto cerrar html
-Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript.jsx'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'othree/html5.vim'
@@ -26,7 +26,7 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
-Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 "=================================GENERAL SETTINGS======================
@@ -65,6 +65,7 @@ set background=dark  " Fondo del tema: dark/light
 if (has("termguicolors"))
  set termguicolors
 endif
+set foldmethod=manual
 " Theme
 syntax enable
 "colorscheme OceanicNext
@@ -296,11 +297,9 @@ autocmd filetype c nnoremap <F7> :w <bar> !gcc -std=c99 -lm % -o %:p:h/%:t:r.out
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-pairs',
   \ 'coc-tsserver',
   \ 'coc-eslint', 
   \ 'coc-prettier', 
-  \ 'coc-json',
   \ 'coc-python',
   \ 'coc-r-lsp',
   \ 'coc-vetur'
@@ -425,6 +424,5 @@ let g:OmniSharp_highlight_groups = {
 \ 'csUserType': ['class name', 'enum name', 'namespace name', 'struct name']
 \}
 let g:OmniSharp_highlight_types = 3
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_github=1
+nmap <C-m> <Plug>MarkdownPreview
+nmap <C-k> <Plug>MarkdownPreviewStop

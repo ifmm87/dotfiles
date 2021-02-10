@@ -22,6 +22,7 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
+Plug 'honza/vim-snippets'
 "Optional:
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -302,8 +303,9 @@ let g:coc_global_extensions = [
   \ 'coc-prettier', 
   \ 'coc-python',
   \ 'coc-r-lsp',
-  \ 'coc-vetur'
-  \ ]
+  \ 'coc-vetur',
+  \ 'coc-restclient'
+  \]
 "============================COC===============================================
 " Some servers have issues with backup files, see #649
 set nowritebackup
@@ -426,3 +428,4 @@ let g:OmniSharp_highlight_groups = {
 let g:OmniSharp_highlight_types = 3
 nmap <C-m> <Plug>MarkdownPreview
 nmap <C-k> <Plug>MarkdownPreviewStop
+noremap <Leader>0 :CocCommand rest-client.request <cr>

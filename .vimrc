@@ -24,6 +24,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'alvan/vim-closetag'         
 Plug 'jiangmiao/auto-pairs'                                              " Auto cerrar html
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
 set title
@@ -70,7 +71,7 @@ set t_Co=256
    set termguicolors     " enable true colors support
  endif
 "colorscheme codecolorscheme onedarkdark
-colorscheme palenight
+colorscheme codedark
 "navigation
 "============transparency=========================
 hi Normal ctermbg=NONE guibg=NONE
@@ -171,7 +172,8 @@ let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtr
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-python',
-  \ 'coc-sql'
+  \ 'coc-sql',
+  \ 'coc-restclient'
   \ ]
 
 inoremap <silent><expr> <TAB>
@@ -246,3 +248,5 @@ xmap <leader>ps  <Plug>(DBExe)
 nmap <leader>ps  <Plug>(DBExe)
 vmap <leader>ps <Plug>(DBExe)
 nmap <leader>pl <Plug>(DBExeLine)
+
+noremap <Leader>0 :CocCommand rest-client.request <cr>

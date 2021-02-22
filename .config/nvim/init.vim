@@ -429,3 +429,4 @@ let g:OmniSharp_highlight_types = 3
 nmap <C-m> <Plug>MarkdownPreview
 nmap <C-k> <Plug>MarkdownPreviewStop
 noremap <Leader>0 :CocCommand rest-client.request <cr>
+set rtp+=/usr/local/opt/fzf

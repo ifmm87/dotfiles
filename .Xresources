@@ -3,7 +3,7 @@
 *.alpha: 0.9
 
 !! Set a default font and font size as below:
-*.font: hack-16;
+*.font: hack-14;
 rofi.combi-modi:    window,drun,ssh
 rofi.theme:         sidebar
 rofi.font:          hack 14

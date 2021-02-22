@@ -8,21 +8,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " Initialize plugin system
 Plug 'tpope/vim-dadbod'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-airline/vim-airline'
-Plug 'jacoborus/tender.vim'
-Plug 'nanotech/jellybeans.vim'
-Plug 'mhartington/oceanic-next'
-Plug 'drewtempelmeyer/palenight.vim'
+Plug 'vim-airline/vim-airline:wq'
 Plug 'troydm/zoomwintab.vim'  
-Plug 'ayu-theme/ayu-vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'Valloric/MatchTagAlways'
 Plug 'scrooloose/nerdcommenter'
-Plug 'alvan/vim-closetag'         
-Plug 'jiangmiao/auto-pairs'                                              " Auto cerrar html
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tomasiser/vim-code-dark'
 call plug#end()
@@ -145,11 +139,8 @@ nnoremap - <c-w>5<
 " Move selected lines up and down
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-let g:sql_type_default = 'pgsql'
 set completeopt+=menuone
 set completeopt+=noselect
-"let g:airline_theme = ''
-"
 "
 let g:mucomplete#enable_auto_at_startup = 1
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
@@ -157,16 +148,16 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_buffers = 1 " Mostrar sólo el nombre del archivo
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
 
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
-  nmap <leader>1 <Plug>AirlineSelectTab1
-  nmap <leader>2 <Plug>AirlineSelectTab2
-  nmap <leader>3 <Plug>AirlineSelectTab3
-  nmap <leader>4 <Plug>AirlineSelectTab4
-  nmap <leader>5 <Plug>AirlineSelectTab5
-  nmap <leader>6 <Plug>AirlineSelectTab6
-  nmap <leader>7 <Plug>AirlineSelectTab7
-  nmap <leader>8 <Plug>AirlineSelectTab8
-  nmap <leader>9 <Plug>AirlineSelectTab9
+  "let g:airline#extensions#tabline#buffer_idx_mode = 1
+  "nmap <leader>1 <Plug>AirlineSelectTab1
+  "nmap <leader>2 <Plug>AirlineSelectTab2
+  "nmap <leader>3 <Plug>AirlineSelectTab3
+  "nmap <leader>4 <Plug>AirlineSelectTab4
+  "nmap <leader>5 <Plug>AirlineSelectTab5
+  "nmap <leader>6 <Plug>AirlineSelectTab6
+  "nmap <leader>7 <Plug>AirlineSelectTab7
+  "nmap <leader>8 <Plug>AirlineSelectTab8
+  "nmap <leader>9 <Plug>AirlineSelectTab9
   nmap <leader>- <Plug>AirlineSelectPrevTab
   nmap <leader>+ <Plug>AirlineSelectNextTab
 
@@ -196,8 +187,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Or use `complete_info` if your vim support it, like:
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-" Cargar fuente Powerline y símbolos (ver nota)
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 " Moverse al buffer siguiente con <líder> + l
  map <leader>l :bnext<CR>
 " " Moverse al buffer anterior con <líder> + j
@@ -250,4 +240,3 @@ nmap <leader>ps  <Plug>(DBExe)
 vmap <leader>ps <Plug>(DBExe)
 nmap <leader>pl <Plug>(DBExeLine)
 
-noremap <Leader>0 :CocCommand rest-client.request <cr>

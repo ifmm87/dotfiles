@@ -23,7 +23,6 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
 Plug 'honza/vim-snippets'
-"Optional:
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'

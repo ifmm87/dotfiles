@@ -23,7 +23,6 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
 Plug 'honza/vim-snippets'
-"Optional:
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
@@ -429,3 +428,4 @@ let g:OmniSharp_highlight_types = 3
 nmap <C-m> <Plug>MarkdownPreview
 nmap <C-k> <Plug>MarkdownPreviewStop
 noremap <Leader>0 :CocCommand rest-client.request <cr>
+set rtp+=/usr/local/opt/fzf

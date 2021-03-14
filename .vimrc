@@ -22,6 +22,7 @@ Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
 set title
+set nocompatible
 set number
 set relativenumber                                                              "Show numbers relative to current line
 set history=500                                                                 "Store lots of :cmdline history

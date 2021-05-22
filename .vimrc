@@ -12,10 +12,10 @@ Plug 'junegunn/fzf.vim'
 " Initialize plugin system
 Plug 'tpope/vim-dadbod'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-airline/vim-airline:wq'
+Plug 'vim-airline/vim-airline'
 Plug 'troydm/zoomwintab.vim'  
 Plug 'haya14busa/incsearch.vim'
-Plug 'Valloric/MatchTagAlways'
+"Plug 'Valloric/MatchTagAlways'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tomasiser/vim-code-dark'

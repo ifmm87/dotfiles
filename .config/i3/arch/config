@@ -63,8 +63,8 @@ bindsym $mod+o exec "switch-klayout"
 bindsym $mod+Ctrl+b exec $term -e 'bmenu'
 bindsym $mod+F3 exec nemo
 bindsym $mod+F5 exec $term -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+t exec --no-startup-id pkill picom
+bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id "~/.config/rofi/bin/applet_screenshot"
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
@@ -440,10 +440,11 @@ bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 # colors
 #class                 border  backgr. text    indicator child_border
-client.focused          #FDD20E #285577 #ffffff #FDD20E  #FDD20E
-client.focused_inactive #FDD20E #5f676a #ffffff #484e50   #690013
-client.unfocused        #FDD20E #222222 #888888 #292d2e   #222222 client.urgent           #2f343a #900000 #EE82EE #900000   #900000 client.placeholder      #559938 #0c0c0c #ffffff #EE82EE   #559938
-
+client.focused          #ff0000 #285577 #ffffff #ff0000  #ff0000
+client.focused_inactive #000000 #5f676a #ffffff #000000   #000000
+client.unfocused        #000000 #222222 #888888 #000000   #000000 
+client.urgent           #2f343a #900000 #EE82EE #900000   #900000 
+client.placeholder      #559938 #0c0c0c #ffffff #EE82EE   #559938
 client.background       #ffffff
 
 

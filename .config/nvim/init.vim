@@ -11,6 +11,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
 Plug 'troydm/zoomwintab.vim'
 Plug 'cohama/lexima.vim'                                                        " Auto cerrar (, {

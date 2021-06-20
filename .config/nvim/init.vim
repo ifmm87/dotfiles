@@ -11,6 +11,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
 Plug 'troydm/zoomwintab.vim'
 Plug 'cohama/lexima.vim'                                                        " Auto cerrar (, {
@@ -27,6 +28,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 call plug#end()
 
 "=================================GENERAL SETTINGS======================
@@ -196,7 +198,7 @@ let g:incsearch#auto_nohlsearch = 1
 let g:NERDSpaceDelims = 1  " Agregar un espacio después del delimitador del comentario
 let g:NERDTrimTrailingWhitespace = 1  " Quitar espacios al quitar comentario
 " Actualizar b7arra cada 250 mili segundos
-set updatetime=250
+set updatetime=1000
 "=======================================
 let g:javascript_plugin_flow = 1
 
@@ -428,3 +430,8 @@ let g:OmniSharp_highlight_types = 3
 nmap <C-m> <Plug>MarkdownPreview
 nmap <C-k> <Plug>MarkdownPreviewStop
 noremap <Leader>0 :CocCommand rest-client.request <cr>
+set rtp+=/usr/local/opt/fzf
+"+++++++++++++++++++++LATEX+++++++++++++
+let g:livepreview_previewer = 'zathura'
+nnoremap <leader>l :LLPStartPreview<CR>
+let g:livepreview_cursorhold_recompile = 1

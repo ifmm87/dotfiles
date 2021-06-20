@@ -10,7 +10,7 @@ exec setxkbmap -layout us
 
 exec_always --no-startup-id dunst
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 2 
+new_window pixel 3 
 new_float normal
 
 # Hide borders
@@ -18,7 +18,7 @@ hide_edge_borders both
 
 # change borders
 bindsym $mod+u border none
-bindsym $mod+y border pixel 2
+bindsym $mod+y border pixel 3
 bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -61,15 +61,12 @@ bindsym $mod+Ctrl+m exec $term -e 'pulsemixer'
 bindsym $mod+o exec "switch-klayout"
 # Start Applications
 bindsym $mod+Ctrl+b exec $term -e 'bmenu'
-bindsym $mod+F2 exec palemoon
 bindsym $mod+F3 exec nemo
 bindsym $mod+F5 exec $term -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+t exec --no-startup-id pkill picom
+bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id "~/.config/rofi/bin/applet_screenshot"
-#bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-#bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
@@ -101,7 +98,10 @@ bindsym $mod+Shift+Right move right
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+bindsym $mod+Ctrl+h  move workspace to output left; 
+bindsym $mod+Ctrl+l  move workspace to output right; 
+bindsym $mod+Ctrl+j  move workspace to output down; 
+bindsym $mod+Ctrl+k  move workspace to output up; 
 
 # split orientation
 bindsym $mod+g split h;exec notify-send 'tile horizontally'
@@ -265,6 +265,10 @@ mode "$mode_system" {
 }
 
 # Resize window (you can also use the mouse for that)
+bindsym $mod+shift+y resize shrink width 10 px or 10 ppt
+bindsym $mod+shift+u resize grow height 10 px or 10 ppt
+bindsym $mod+shift+i resize shrink height 10 px or 10 ppt
+bindsym $mod+shift+o resize grow width 10 px or 10 ppt
 bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -306,9 +310,6 @@ exec_always --no-startup-id mpd
 exec_always killall compton 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
-#exec --no-startup-id manjaro-hello
-#exec --no-startup-id nm-apple t
-#exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id pamac-tray
 #exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
@@ -316,21 +317,11 @@ exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
 #exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 20 -locker blurlock
-#exec_always --no-startup-id ff-theme-util
-#exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh --colorblocks
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
-# https://i3wm.org/docs/userguide.html#xresources
-# Change the variable name at the place you want to match the color
-# of your terminal like this:
 # [example]
-# If you want your bar to have the same background color as your 
-# terminal background change the line 362 from:
-# background #14191D
-# to:
-# background $term_background
-# Same logic applied to everything else.
 set_from_resource $term_background background
 set_from_resource $term_foreground foreground
 set_from_resource $term_color0     color0
@@ -437,9 +428,6 @@ mode "$mode_gaps_outer" {
 }
 # Media keys
 # Media volume controls
-#bindsym XF86AudioMute exec pulsemixer sset 'Master' toggle
-#bindsym XF86AudioLowerVolume exec pulsemixer sset 'Master' 5%-
-#bindsym XF86AudioRaiseVolume exec pulsemixer sset 'Master' 5%+
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute @DEFAULT_SINK@ false; pactl set-sink-volume @DEFAULT_SINK@ +2%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-mute @DEFAULT_SINK@ false; pactl set-sink-volume @DEFAULT_SINK@ -2%"
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
@@ -452,10 +440,11 @@ bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 # colors
 #class                 border  backgr. text    indicator child_border
-client.focused          #FDD20E #285577 #ffffff #FDD20E  #FDD20E
-client.focused_inactive #FDD20E #5f676a #ffffff #484e50   #690013
-client.unfocused        #FDD20E #222222 #888888 #292d2e   #222222 client.urgent           #2f343a #900000 #EE82EE #900000   #900000 client.placeholder      #559938 #0c0c0c #ffffff #EE82EE   #559938
-
+client.focused          #007030 #285577 #ffffff #007030  #007030
+client.focused_inactive #000000 #5f676a #ffffff #000000   #000000
+client.unfocused        #000000 #222222 #888888 #000000   #000000 
+client.urgent           #2f343a #900000 #EE82EE #900000   #900000 
+client.placeholder      #559938 #0c0c0c #ffffff #EE82EE   #559938
 client.background       #ffffff
 
 

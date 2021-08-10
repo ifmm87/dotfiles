@@ -20,17 +20,15 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript.jsx'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'othree/html5.vim'
 Plug 'tomasiser/vim-code-dark'
-Plug 'doums/darcula'
 Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
 Plug 'honza/vim-snippets'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mhinz/vim-startify'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'puremourning/vimspector'
-Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
 
 "=================================GENERAL SETTINGS======================
@@ -74,13 +72,9 @@ set foldmethod=manual
 syntax enable
 "colorscheme OceanicNext
 colorscheme codedark
-"colorscheme darcula
 autocmd Filetype javascript set softtabstop=2
 autocmd Filetype javascript set sw=2
 autocmd Filetype javascript set ts=2
-autocmd Filetype java set softtabstop=2
-autocmd Filetype java set sw=2
-autocmd Filetype java set ts=2
 "==================================================================
 
 "=========================LEADER MAPPINGS==========================
@@ -311,8 +305,7 @@ let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-r-lsp',
   \ 'coc-vetur',
-  \ 'coc-restclient',
-  \ 'coc-java'
+  \ 'coc-restclient'
   \]
 "============================COC===============================================
 " Some servers have issues with backup files, see #649
@@ -350,8 +343,10 @@ nmap <silent> <F12> <Plug>(coc-definition)
 nmap <silent> <F11> <Plug>(coc-type-definition)
 nmap <silent> <F10> <Plug>(coc-implementation)
 nmap <silent> <leader>fr <Plug>(coc-references)
+
 " Use leader ho to show documentation in preview window
 nnoremap <silent> <leader>ho :call <SID>show_documentation()<CR>
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -440,15 +435,3 @@ set rtp+=/usr/local/opt/fzf
 let g:livepreview_previewer = 'zathura'
 nnoremap <leader>l :LLPStartPreview<CR>
 let g:livepreview_cursorhold_recompile = 1
-let g:vimspector_enable_mappings = 'HUMAN'
-
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-  },
-}
-EOF
-

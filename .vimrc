@@ -12,7 +12,7 @@ Plug 'junegunn/fzf.vim'
 " Initialize plugin system
 Plug 'tpope/vim-dadbod'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-airline/vim-airline:wq'
+Plug 'vim-airline/vim-airline'
 Plug 'troydm/zoomwintab.vim'  
 Plug 'haya14busa/incsearch.vim'
 "Plug 'Valloric/MatchTagAlways'
@@ -161,24 +161,21 @@ let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtr
   nmap <leader>- <Plug>AirlineSelectPrevTab
   nmap <leader>+ <Plug>AirlineSelectNextTab
 
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-python',
-  \ 'coc-sql',
-  \ 'coc-restclient'
-  \ ]
-
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 

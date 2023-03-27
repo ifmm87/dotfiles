@@ -2,7 +2,7 @@
 let g:mapleader = " "
 " Directorio de plugins
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -10,25 +10,21 @@ Plug 'junegunn/fzf.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'xuyuanp/nerdtree-git-plugin'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'mxw/vim-jsx'
 Plug 'troydm/zoomwintab.vim'
-Plug 'cohama/lexima.vim'                                                        " Auto cerrar (, {
 Plug 'alvan/vim-closetag'                                                       " Auto cerrar html
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript.jsx'] }
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'othree/html5.vim'
-Plug 'tomasiser/vim-code-dark'
+Plug 'ifmm87/vim-code-dark'
 Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
-Plug 'honza/vim-snippets'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mhinz/vim-startify'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'lervag/vimtex'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 "=================================GENERAL SETTINGS======================
@@ -60,21 +56,25 @@ set nobackup
 set nowb
 set autoread
 au CursorHold,FocusGained * checktime
+let g:vim_json_conceal=0
 set encoding=UTF-8
 "au FocusGained,BufEnter * checktime
 set smartindent
 set background=dark  " Fondo del tema: dark/light
-if (has("termguicolors"))
  set termguicolors
-endif
-set foldmethod=manual
+"set foldmethod=manual
 " Theme
-syntax enable
+"syntax enable
 "colorscheme OceanicNext
+" If you have vim-airline, you can also enable the provided theme
+"let g:airline_theme = 'codedark'
 colorscheme codedark
 autocmd Filetype javascript set softtabstop=2
 autocmd Filetype javascript set sw=2
 autocmd Filetype javascript set ts=2
+autocmd Filetype typescript set softtabstop=2
+autocmd Filetype typescript set sw=2
+autocmd Filetype typescript set ts=2
 "==================================================================
 
 "=========================LEADER MAPPINGS==========================
@@ -300,12 +300,16 @@ autocmd filetype c nnoremap <F7> :w <bar> !gcc -std=c99 -lm % -o %:p:h/%:t:r.out
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-prettier', 
+  \ 'coc-eslint',
+  \ 'coc-prettier',
   \ 'coc-python',
-  \ 'coc-r-lsp',
   \ 'coc-vetur',
-  \ 'coc-restclient'
+  \ 'coc-restclient',
+  \ 'coc-vimtex',
+  \ 'coc-texlab',
+  \ 'coc-pairs',
+  \ 'coc-html',
+  \ 'coc-angular',
   \]
 "============================COC===============================================
 " Some servers have issues with backup files, see #649
@@ -315,24 +319,27 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -361,6 +368,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--ignore=node_modules', fzf#vim#with_preview(), <bang>0)
 " Remap for format selected region
 xmap <leader>cf  <Plug>(coc-format-selected)
 nmap <leader>cf  <Plug>(coc-format-selected)
@@ -428,10 +436,12 @@ let g:OmniSharp_highlight_groups = {
 \}
 let g:OmniSharp_highlight_types = 3
 nmap <C-m> <Plug>MarkdownPreview
-nmap <C-k> <Plug>MarkdownPreviewStop
+"nmap <C-k> <Plug>MarkdownPreviewStop
+let g:mkdp_browser = 'google-chrome-stable'
 noremap <Leader>0 :CocCommand rest-client.request <cr>
 set rtp+=/usr/local/opt/fzf
 "+++++++++++++++++++++LATEX+++++++++++++
 let g:livepreview_previewer = 'zathura'
 nnoremap <leader>l :LLPStartPreview<CR>
 let g:livepreview_cursorhold_recompile = 1
+lua require'colorizer'.setup()

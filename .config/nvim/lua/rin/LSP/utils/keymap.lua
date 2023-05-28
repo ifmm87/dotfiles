@@ -26,6 +26,8 @@ local mapping = function(bufnr)
   buf_keymap(bufnr, "n", "<Leader>ll", ":Lspsaga show_line_diagnostics<CR>")
   buf_keymap(bufnr, "n", "<Leader>lL", ":Lspsaga show_buf_diagnostics<CR>")
   buf_keymap(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
+  vim.keymap.set("v", "<leader>cf", vim.lsp.buf.format, { remap = false })
+
 end
 
 return mapping

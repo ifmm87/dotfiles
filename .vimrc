@@ -24,7 +24,6 @@ call plug#end()
 set title
 set nocompatible
 set number
-set relativenumber                                                              "Show numbers relative to current line
 set history=500                                                                 "Store lots of :cmdline history
 "set fileencoding=utf-8 
 set mouse=a

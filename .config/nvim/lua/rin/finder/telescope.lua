@@ -29,11 +29,22 @@ M.setup = function()
     defaults = {
       prompt_prefix = " 什",
       selection_caret = " ",
+      vimgrep_arguments = {
+        'rg',
+        '--no-heading',
+        '--with-filename',
+        '--line-number',
+        '--column',
+        '--smart-case',
+        '-u',
+        '--hidden'
+      },
     },
     extensions = {
       fzy_native = {
         override_generic_sorter = false,
         override_file_sorter = true,
+
       }
     }
   })
@@ -41,7 +52,8 @@ M.setup = function()
 
   local keymap = require("rin.utils.keymap").keymap
 
-  keymap("n", "<leader>ff", ":Telescope find_files<CR>")
+  keymap("n", "<leader>ff", ":Telescope find_files hidden=true no_ignore=true<CR>")
+  keymap("n", "<leader>ft", ":Telescope git_files<CR>")
   keymap("n", "<leader>fg", ":Telescope live_grep<CR>")
   keymap("n", "<leader>fb", ":Telescope buffers<CR>")
   keymap("n", "<leader>fh", ":Telescope oldfiles<CR>")

@@ -56,7 +56,7 @@ M.setup = function()
         },
       },
       float = {
-        enable = false,
+        enable = true,
         quit_on_focus_loss = true,
         open_win_config = {
           relative = "win",
@@ -169,7 +169,7 @@ M.setup = function()
     },
     git = {
       enable = true,
-      ignore = true,
+      ignore = false,
       show_on_dirs = true,
       show_on_open_dirs = true,
       timeout = 400,

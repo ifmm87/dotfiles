@@ -236,4 +236,10 @@ xmap <leader>ps  <Plug>(DBExe)
 nmap <leader>ps  <Plug>(DBExe)
 vmap <leader>ps <Plug>(DBExe)
 nmap <leader>pl <Plug>(DBExeLine)
-
+vmap <leader>cf  :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
+autocmd FileType sql call SqlFormatter()
+function SqlFormatter()
+    set noai
+    " set mappings...
+    vmap <leader>cf  :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
+endfunction

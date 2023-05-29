@@ -61,7 +61,8 @@ if ok then
     require("rin.DAP.main").plugin,
 
     -- comment
-    require("rin.comment.comment").plugin
+    require("rin.comment.comment").plugin,
+    require("rin.zen.zen-mode").plugin
 
   })
 end

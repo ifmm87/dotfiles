@@ -24,7 +24,7 @@ M.setup = function()
   lsp_status.config({
     status_symbol = "",
     show_filename = true,
-    diagnostics = false,
+    diagnostics = true,
   })
 
   local function LSP()

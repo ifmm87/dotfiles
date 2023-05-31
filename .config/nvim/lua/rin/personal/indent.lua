@@ -12,8 +12,10 @@ M.setup = function(args)
 
   local keymap = require("rin.utils.keymap").keymap
   -- keymap("n", "<A-k>", ":move -2<CR>")
-  keymap('x', '<s-tab>', "<gv")
-  keymap('x', '<tab>', ">gv")
+  keymap('v', '<s-tab>', "<gv")
+  keymap('n', '<s-tab>', "<gv")
+  keymap('v', '<tab>', ">gv")
+  keymap('n', '<tab>', ">gv")
 
   -- # Duplicate Line
 

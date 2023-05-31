@@ -15,7 +15,20 @@ M.setup = function()
     return
   end
 
-  zenmode.setup({ })
+  zenmode.setup({
+    window = {
+      width = 160,
+         options = {
+          signcolumn = "yes", -- disable signcolumn
+          number = true, -- disable number column
+          -- relativenumber = false, -- disable relative numbers
+          -- cursorline = false, -- disable cursorline
+          -- cursorcolumn = false, -- disable cursor column
+          -- foldcolumn = "0", -- disable fold column
+          -- list = false, -- disable whitespace characters
+        },
+    }
+  })
 
 local keymap = require("rin.utils.keymap").keymap
   keymap("n", "<leader>zm", ":ZenMode<CR>")

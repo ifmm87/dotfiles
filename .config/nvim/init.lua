@@ -23,14 +23,14 @@ if ok then
   lazy.setup({
 
     -- # Theme
-    require("rin.theme.tokyonight").plugin,
+    -- require("rin.theme.tokyonight").plugin,
     -- require("rin.theme.tokyodark").plugin,
     -- require("rin.theme.iceberg").plugin,
     -- require("rin.theme.kanagawa").plugin,
     -- require("rin.theme.nightfox").plugin,
     -- require("rin.theme.nightfly").plugin,
     -- require("rin.theme.catppuccin").plugin,
-    -- require("rin.theme.material").plugin,
+    require("rin.theme.material").plugin,
 
     -- # Buffer
     require("rin.buffer.barbar").plugin,
@@ -50,6 +50,7 @@ if ok then
     --require("rin.filetree.neo-tree").plugin,
 
     -- # Status line
+    require("rin.statusline.navic").plugin,
     require("rin.statusline.lualine").plugin,
     -- # Git
     require("rin.git.gitsigns").plugin,

@@ -42,7 +42,7 @@ M.setup = function()
     view = {
       adaptive_size = false,
       centralize_selection = false,
-      width = 30,
+      width = 40,
       hide_root_folder = false,
       side = "right",
       preserve_window_proportions = false,
@@ -57,12 +57,12 @@ M.setup = function()
       },
       float = {
         enable = true,
-        quit_on_focus_loss = true,
+        quit_on_focus_loss = false,
         open_win_config = {
           relative = "win",
           border = "rounded",
-          width = 30,
-          height = 30,
+          width = 50,
+          height = 35,
         },
       },
     },

@@ -19,9 +19,8 @@ end
 
 local on_attach = function(client, bufnr)
   require("rin.LSP.utils.keymap")(bufnr)
-  if client.server_capabilities.documentFormattingProvider then
-    -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
-  end
+    local navic = require "nvim-navic"
+    navic.attach(client, bufnr)
 end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -61,5 +60,5 @@ null_ls.register({
       end,
     }),
   },
-  -- on_attach = on_attach,
+  on_attach = on_attach,
 })

@@ -36,7 +36,7 @@ install vscode js debug
 ```
 git clone https://github.com/microsoft/vscode-js-debug ~/.DAP/vscode-js-debug --depth=1
 cd ~/.DAP/vscode-js-debug
-npm install --legacy-peer-deps
+npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out
 npm run compile
 ```
 
@@ -53,7 +53,7 @@ end
 
 dap_vscode_js.setup({
   node_path = "node",
-  debugger_path = vim.fn.stdpath "data" .. "/site/pack/packer/opt/vscode-js-debug",
+  debugger_path = os.getenv("HOME") .. "/.DAP/vscode-js-debug",
   adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 })
 

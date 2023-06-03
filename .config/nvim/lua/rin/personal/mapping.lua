@@ -6,9 +6,6 @@ local M = {}
 M.setup = function(args)
   vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
   vim.g.mapleader = " "
-  vim.cmd "hi! Normal ctermbg=NONE guibg=NONE"
-  vim.cmd "hi! NonText ctermbg=NONE guibg=NONE"
-  vim.cmd "hi! EndOfBuffer ctermfg=NONE guibg=NONE"
   vim.api.nvim_set_keymap("v", "<C-c>", '"+y<CR>', { silent = true })
   vim.api.nvim_set_keymap("n", "<C-v>", '"+p<CR>', { silent = true })
   vim.api.nvim_set_keymap("v", "<C-v>", '"+p<CR>', { silent = true })
@@ -17,6 +14,9 @@ M.setup = function(args)
   vim.api.nvim_set_keymap("i", "<C-s>", "<Esc>:w<CR>", { silent = true })
   vim.api.nvim_set_keymap("n", "+", "<c-w>5>", { silent = true })
   vim.api.nvim_set_keymap("n", "-", "<c-w>5<", { silent = true })
+  vim.cmd('hi Normal ctermbg=NONE guibg=NONE')
+  vim.cmd('hi NonText ctermbg=NONE guibg=NONE')
+  vim.cmd('hi EndOfBuffer ctermfg=NONE guibg=NONE')
 
 end
 

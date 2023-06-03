@@ -56,7 +56,13 @@ dap_vscode_js.setup({
   debugger_path = os.getenv("HOME") .. "/.DAP/vscode-js-debug",
   adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 })
-
+-- DEPRECATED BUT WORKS
+-- dap.adapters.node2 = {
+--     type = "executable",
+--     command = "node",
+--     args = { os.getenv("HOME") .. "/.DAP/vscode-node-debug2/out/src/nodeDebug.js" },
+-- }
+--
 local exts = {
   "javascript",
   "typescript",
@@ -66,6 +72,7 @@ local exts = {
   "vue",
   "svelte",
 }
+
 
 for i, ext in ipairs(exts) do
   dap.configurations[ext] = {
@@ -117,29 +124,29 @@ for i, ext in ipairs(exts) do
       internalConsoleOptions = "neverOpen",
       skipFiles = { "<node_internals>/**", "node_modules/**" },
     },
-    {
-      type = "pwa-node",
-      request = "launch",
-      name = "Launch Test Current File (pwa-node with vitest)",
-      cwd = vim.fn.getcwd(),
-      program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
-      args = { "--inspect-brk", "--threads", "false", "run", "${file}" },
-      autoAttachChildProcesses = true,
-      smartStep = true,
-      console = "integratedTerminal",
-      skipFiles = { "<node_internals>/**", "node_modules/**" },
-    },
-    {
-      type = "pwa-node",
-      request = "launch",
-      name = "Launch Test Current File (pwa-node with deno)",
-      cwd = vim.fn.getcwd(),
-      runtimeArgs = { "test", "--inspect-brk", "--allow-all", "${file}" },
-      runtimeExecutable = "deno",
-      smartStep = true,
-      console = "integratedTerminal",
-      attachSimplePort = 9229,
-    },
+    -- {
+    --   type = "pwa-node",
+    --   request = "launch",
+    --   name = "Launch Test Current File (pwa-node with vitest)",
+    --   cwd = vim.fn.getcwd(),
+    --   program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+    --   args = { "--inspect-brk", "--threads", "false", "run", "${file}" },
+    --   autoAttachChildProcesses = true,
+    --   smartStep = true,
+    --   console = "integratedTerminal",
+    --   skipFiles = { "<node_internals>/**", "node_modules/**" },
+    -- },
+    -- -- {
+    --   type = "pwa-node",
+    --   request = "launch",
+    --   name = "Launch Test Current File (pwa-node with deno)",
+    --   cwd = vim.fn.getcwd(),
+    --   runtimeArgs = { "test", "--inspect-brk", "--allow-all", "${file}" },
+    --   runtimeExecutable = "deno",
+    --   smartStep = true,
+    --   console = "integratedTerminal",
+    --   attachSimplePort = 9229,
+    -- },
     {
       type = "pwa-chrome",
       request = "attach",
@@ -161,19 +168,33 @@ for i, ext in ipairs(exts) do
     -- {
     --   type = "node2",
     --   request = "attach",
-    --   name = "Attach Program (Node2 with ts-node)",
+    --   name = "Attach Program Docker ",
     --   cwd = vim.fn.getcwd(),
     --   sourceMaps = true,
     --   skipFiles = { "<node_internals>/**" },
     --   port = 9229,
+    --   remoteRoot = "/var/app/",
+    --   localRoot = "${workspaceFolder}",
     -- },
     {
       type = "pwa-node",
       request = "attach",
-      name = "Attach Program (pwa-node, select pid)",
+      name = "Attach Regular Program (pwa-node, select pid)",
       cwd = vim.fn.getcwd(),
       processId = dap_utils.pick_process,
       skipFiles = { "<node_internals>/**" },
+    },
+    {
+      type = "pwa-node",
+      request = "attach",
+      name = "Attach Docker process",
+      cwd = vim.fn.getcwd(),
+      processId = dap_utils.pick_process,
+      skipFiles = { "<node_internals>/**" },
+      remoteRoot = function()
+        return  vim.fn.input("remoteRoot: ", "/var/app")
+      end,
+      localRoot = "${workspaceFolder}",
     },
   }
 end

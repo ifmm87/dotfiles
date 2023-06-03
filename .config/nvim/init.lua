@@ -17,7 +17,7 @@ local safe_require = require("rin.utils.safe_require")
 local ok, lazy = safe_require("lazy")
 
 -- # Utils
-require("rin.personal.main").setup()
+-- require("rin.personal.main").setup()
 
 if ok then
   lazy.setup({
@@ -30,7 +30,8 @@ if ok then
     -- require("rin.theme.nightfox").plugin,
     -- require("rin.theme.nightfly").plugin,
     -- require("rin.theme.catppuccin").plugin,
-    require("rin.theme.material").plugin,
+    -- require("rin.theme.material").plugin,
+    require("rin.theme.codedark").plugin,
 
     -- # Buffer
     require("rin.buffer.barbar").plugin,
@@ -67,3 +68,5 @@ if ok then
 
   })
 end
+
+require("rin.personal.main").setup()

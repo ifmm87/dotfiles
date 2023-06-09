@@ -72,8 +72,8 @@ M.setup = function()
           "stacks",
           "watches",
         },
-        size = 40,
-        position = "right",
+        size = 50,
+        position = "left",
       },
       {
         elements = {
@@ -98,7 +98,7 @@ M.setup = function()
     }
   })
   dap.listeners.after.event_initialized["dapui_config"] = function()
-    vim.cmd("tabfirst|tabnext")
+    -- vim.cmd("tabfirst|tabnext")
     dapui.open()
   end
   -- dap.listeners.before.event_terminated["dapui_config"] = function()

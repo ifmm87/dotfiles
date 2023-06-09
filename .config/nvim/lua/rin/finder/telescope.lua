@@ -1,6 +1,6 @@
 --[=[
 # DEPENDENCY
-- [ripgrep](github.com/BurntSushi/ripgrep) for live_grep
+- [ripgrep](github.com/BurntSushi/ripgrep) for live_grep continuación
 --]=]
 
 local M = {}
@@ -36,9 +36,14 @@ M.setup = function()
         '--line-number',
         '--column',
         '--smart-case',
-        '-u',
-        '--hidden'
+        '--hidden',
+        '--trim',
       },
+    },
+    pickers = {
+        find_files = {
+            find_command = {"rg", "--files", "--hidden", "--glob", "!**/.git/*", "--glob", "!**/node_modules/*"},
+        }
     },
     extensions = {
       fzy_native = {

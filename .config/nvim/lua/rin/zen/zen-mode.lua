@@ -30,8 +30,10 @@ M.setup = function()
     }
   })
 
-local keymap = require("rin.utils.keymap").keymap
+  local keymap = require("rin.utils.keymap").keymap
+
   keymap("n", "<leader>zm", ":ZenMode<CR>")
+  keymap("n", "<leader>zn", ":ZenMode<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then

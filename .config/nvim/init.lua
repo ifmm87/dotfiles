@@ -48,7 +48,7 @@ if ok then
 
     -- # File Tree
     require("rin.filetree.nvim-tree").plugin,
-    --require("rin.filetree.neo-tree").plugin,
+    -- require("rin.filetree.neo-tree").plugin,
 
     -- # Status line
     require("rin.statusline.navic").plugin,

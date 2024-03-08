@@ -14,7 +14,7 @@ M.setup = function()
   vim.opt.list = true
   vim.opt.listchars = {
     -- tab = "→ ",
-    lead = "·",
+    --lead = "·",
     trail = "·",
     -- eol = "↵",
   }

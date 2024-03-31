@@ -65,7 +65,7 @@ if ok then
     -- comment
     require("rin.comment.comment").plugin,
     require("rin.zen.zen-mode").plugin,
-    require("rin.personal.main").setup()
+    require("rin.personal.main").plugin
   })
 end
 

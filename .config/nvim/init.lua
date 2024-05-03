@@ -23,15 +23,15 @@ if ok then
   lazy.setup({
 
     -- # Theme
-    -- require("rin.theme.tokyonight").plugin,
+        -- require("rin.theme.tokyonight").plugin,
     -- require("rin.theme.tokyodark").plugin,
     -- require("rin.theme.iceberg").plugin,
     -- require("rin.theme.kanagawa").plugin,
-    -- require("rin.theme.nightfox").plugin,
+    require("rin.theme.nightfox").plugin,
     -- require("rin.theme.nightfly").plugin,
     -- require("rin.theme.catppuccin").plugin,
     -- require("rin.theme.material").plugin,
-    require("rin.theme.codedark").plugin,
+    -- require("rin.theme.codedark").plugin,
 
     -- # Buffer
     require("rin.buffer.barbar").plugin,
@@ -55,6 +55,7 @@ if ok then
     require("rin.statusline.lualine").plugin,
     -- # Git
     require("rin.git.gitsigns").plugin,
+    require("rin.git.copilot").plugin,
 
     -- # LSP
     require("rin.LSP.main").plugin,

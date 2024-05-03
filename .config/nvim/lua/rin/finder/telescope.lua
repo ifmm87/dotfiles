@@ -27,7 +27,7 @@ M.setup = function()
 
   telescope.setup({
     defaults = {
-      prompt_prefix = " 什",
+      prompt_prefix = "",
       selection_caret = " ",
       vimgrep_arguments = {
         'rg',
@@ -42,7 +42,7 @@ M.setup = function()
     },
     pickers = {
         find_files = {
-            find_command = {"rg", "--files", "--hidden", "--glob", "!**/.git/*", "--glob", "!**/node_modules/*"},
+            find_command = {"rg", "--files", "--hidden", "--glob", "!**/.git/*", "--glob","!**/venv/*", "!**/node_modules/*"},
         }
     },
     extensions = {
@@ -63,6 +63,8 @@ M.setup = function()
   keymap("n", "<leader>fb", ":Telescope buffers<CR>")
   keymap("n", "<leader>fh", ":Telescope oldfiles<CR>")
   keymap("n", "<leader>fm", ":Telescope marks<CR>")
+  keymap("n", "<leader>fB", ":Telescope git_branches<CR>")
+  keymap("n", "<leader>fr", ":Telescope resume<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then

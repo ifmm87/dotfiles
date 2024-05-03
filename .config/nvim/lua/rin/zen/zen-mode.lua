@@ -17,7 +17,7 @@ M.setup = function()
 
   zenmode.setup({
     window = {
-      width = 160,
+      width = 180,
          options = {
           signcolumn = "yes", -- disable signcolumn
           number = true, -- disable number column
@@ -32,8 +32,8 @@ M.setup = function()
 
   local keymap = require("rin.utils.keymap").keymap
 
-  keymap("n", "<leader>zm", ":ZenMode<CR>")
-  keymap("n", "<leader>zn", ":ZenMode<CR>")
+  keymap("n", "<leader>zb", ":ZenMode<CR>")
+  keymap("n", "<leader>zv", ":ZenMode<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then

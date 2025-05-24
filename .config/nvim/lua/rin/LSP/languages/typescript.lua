@@ -40,16 +40,18 @@ lspconfig.ts_ls.setup({
   single_file_support = false,
 })
 
+
 null_ls.register({
   name = "null-ls-TypeScript",
   sources = {
-    null_ls.builtins.diagnostics.eslint_d.with({
+
+     require("none-ls.diagnostics.eslint_d").with({
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       condition = function(utils)
         return utils.root_has_file({ "package.json" })
       end,
     }),
-    null_ls.builtins.code_actions.eslint_d.with({
+    require("none-ls.code_actions.eslint_d").with({
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       condition = function(utils)
         return utils.root_has_file({ "package.json" })
@@ -64,3 +66,4 @@ null_ls.register({
   },
   on_attach = on_attach,
 })
+

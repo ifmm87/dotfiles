@@ -5,10 +5,14 @@ local M = {}
 M.plugin = {
   "mfussenegger/nvim-dap",
   dependencies = {
-    "rcarriga/nvim-dap-ui",
+    {
+      "rcarriga/nvim-dap-ui",
+      dependencies = {
+        "nvim-neotest/nvim-nio",
+      },
+    },
     "nvim-treesitter/nvim-treesitter",
     "theHamsta/nvim-dap-virtual-text",
-    "mxsdev/nvim-dap-vscode-js",
   },
   event = "VeryLazy",
   config = function()
@@ -17,15 +21,19 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_dap, dap = safe_require("dap")
-  local ok_dapui, dapui = safe_require("dapui")
-  local ok_dap_ext_vscode, dap_ext_vscode = safe_require("dap.ext.vscode")
-  local ok_dap_virtual_text, dap_virtual_text = safe_require("nvim-dap-virtual-text")
-
-  if not (ok_dap and ok_dapui and ok_dap_ext_vscode and ok_dap_virtual_text) then
+  local ok = require("rin.utils.check_requires").check({
+    "dap",
+    "dapui",
+    "nvim-dap-virtual-text",
+  })
+  if not ok then
     return
   end
+
+  local dap = require("dap")
+  local dapui = require("dapui")
+  local dap_ext_vscode = require("dap.ext.vscode")
+  local dap_virtual_text = require("nvim-dap-virtual-text")
 
   -- # Sign
   vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
@@ -72,12 +80,12 @@ M.setup = function()
           "stacks",
           "watches",
         },
-        size = 50,
-        position = "left",
+        size = 40,
+        position = "right",
       },
       {
         elements = {
-          { id = "repl", size = 0.5 },
+          { id = "repl",    size = 0.5 },
           { id = "console", size = 0.5 },
         },
         size = 10,
@@ -85,8 +93,8 @@ M.setup = function()
       },
     },
     floating = {
-      max_height = nil, -- These can be integers or a float between 0 and 1.
-      max_width = nil, -- Floats will be treated as percentage of your screen.
+      max_height = nil,   -- These can be integers or a float between 0 and 1.
+      max_width = nil,    -- Floats will be treated as percentage of your screen.
       border = "rounded", -- Border style. Can be "single", "double" or "rounded"
       mappings = {
         close = { "q", "<Esc>" },
@@ -98,7 +106,7 @@ M.setup = function()
     }
   })
   dap.listeners.after.event_initialized["dapui_config"] = function()
-    -- vim.cmd("tabfirst|tabnext")
+    vim.cmd("tabfirst|tabnext")
     dapui.open()
   end
   -- dap.listeners.before.event_terminated["dapui_config"] = function()

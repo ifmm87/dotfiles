@@ -1,34 +1,37 @@
-local safe_require = require("rin.utils.safe_require")
-local ok_cmp, cmp = safe_require("cmp")
-local ok_luasnip, luasnip = safe_require("luasnip")
-
-if not (ok_cmp and ok_luasnip) then
+local ok = require("rin.utils.check_requires").check({
+  "cmp",
+  "luasnip",
+})
+if not ok then
   return
 end
 
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+
 local icons = {
-  Text = "",
+  Text = "󰉿",
   Method = "",
-  Function = "",
+  Function = "󰊕",
   Constructor = "",
-  Field = "ﰠ",
+  Field = "󰜢",
   Variable = "",
-  Class = "ﴯ",
+  Class = "󰒕",
   Interface = "",
   Module = "",
-  Property = "ﰠ",
-  Unit = "塞",
+  Property = "󱌣",
+  Unit = "󰑭",
   Value = "",
   Enum = "",
-  Keyword = "",
+  Keyword = "󰌋",
   Snippet = "",
   Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
+  File = "󰈙",
+  Reference = "󰈇",
+  Folder = "󰉋",
   EnumMember = "",
   Constant = "",
-  Struct = "פּ",
+  Struct = "󰙅",
   Event = "",
   Operator = "",
   TypeParameter = ""
@@ -45,8 +48,8 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = {
-    ["<C-j>"] = cmp.mapping.select_prev_item(),
-    ["<C-k>"] = cmp.mapping.select_next_item(),
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),

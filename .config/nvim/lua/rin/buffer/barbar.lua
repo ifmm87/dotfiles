@@ -9,25 +9,30 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_barbar, barbar = safe_require("bufferline") -- < why has the same name to bufferline ?
-
-  if not ok_barbar then
+  local ok = require("rin.utils.check_requires").check({
+    "bufferline",
+  })
+  if not ok then
     return
   end
+
+  local barbar = require("bufferline") -- < why has the same name to bufferline ?
 
   barbar.setup({
     animation = false,
     auto_hide = false,
     tabpages = false,
+    icons = {
+      button = '󰖭',
+    },
   })
 
   local keymap = require("rin.utils.keymap").keymap
 
-  keymap("n", "<leader>,", ":BufferPrevious<CR>")
-  keymap("n", "<leader>.", ":BufferNext<CR>")
-  keymap("n", "<leader>m,", ":BufferMovePrevious<CR>")
-  keymap("n", "<leader>m.", ":BufferMoveNext<CR>")
+  keymap("n", "<A-,>", ":BufferPrevious<CR>")
+  keymap("n", "<A-.>", ":BufferNext<CR>")
+  keymap("n", "<A-<>", ":BufferMovePrevious<CR>")
+  keymap("n", "<A->>", ":BufferMoveNext<CR>")
   keymap("n", "<A-w>", ":BufferClose<CR>")
   keymap("n", "<A-W>", ":BufferClose!<CR>")
 end

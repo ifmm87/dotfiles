@@ -7,12 +7,11 @@ M.plugin = {
   dependencies = {
     -- # LSP Hook
     {
-      "jose-elias-alvarez/null-ls.nvim",
+      "nvimtools/none-ls.nvim",
       dependencies = {
         "nvim-lua/plenary.nvim",
       },
     },
-    "jose-elias-alvarez/nvim-lsp-ts-utils", -- null-ls for TS project
     -- # LSP Completion
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lsp-signature-help",
@@ -24,10 +23,10 @@ M.plugin = {
     "saadparwaiz1/cmp_luasnip",
     "L3MON4D3/LuaSnip",
     -- # LSP UI
-    {
-      "glepnir/lspsaga.nvim",
-      branch = "main",
-    },
+    -- {
+    --   "nvimdev/lspsaga.nvim",
+    --   branch = "main",
+    -- },
   },
   event = "VeryLazy",
   config = function()
@@ -40,20 +39,21 @@ M.setup = function()
   require("rin.LSP.utils.icon")
   require("rin.LSP.utils.cmp")
   -- # LSP UI
-  require("rin.LSP.utils.lspsaga")
+  -- require("rin.LSP.utils.lspsaga")
   -- # LSP Config
   require("rin.LSP.languages.typescript")
   require("rin.LSP.languages.css")
   require("rin.LSP.languages.svelte")
   require("rin.LSP.languages.vue")
-  require("rin.LSP.languages.angular")
   require("rin.LSP.languages.astro")
   require("rin.LSP.languages.deno")
+  require("rin.LSP.languages.rust")
   require("rin.LSP.languages.go")
   require("rin.LSP.languages.cpp")
   require("rin.LSP.languages.python")
   require("rin.LSP.languages.lua")
   require("rin.LSP.languages.php")
+  require("rin.LSP.languages.csharp")
   -- format some markup and dif file
   require("rin.LSP.languages.prettier")
 

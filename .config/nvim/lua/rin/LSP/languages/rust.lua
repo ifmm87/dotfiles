@@ -1,9 +1,12 @@
 --[=[
-Astro lsp
-linting and formatting you can check on `typescript.lua`
+Rust lsp and formatting
+`rust-analyzer` recommend to install using rustup
+
 ```
-npm i -g @astrojs/language-server eslint_d @fsouza/prettierd
+rustup component add rust-src rust-analyzer
 ```
+
+format using rustfmt
 --]=]
 
 local ok = require("rin.utils.check_requires").check({
@@ -28,22 +31,27 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.astro.setup({
+lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    -- Using builtin formatter
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
+  settings = {
+    ["rust-analyzer"] = {
+      diagnostics = {
+        enable = false,
+      },
+    },
+  },
 })
 
 null_ls.register({
-  name = "null-ls-astro",
-  filetypes = { "astro" },
+  name = "null-ls-Rust",
   sources = {
-    null_ls.builtins.formatting.prettierd.with({
-      filetypes = { "astro" },
+    null_ls.builtins.formatting.rustfmt.with({
+      filetypes = { "rust" },
     }),
   },
   on_attach = on_attach,

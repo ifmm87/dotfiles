@@ -3,7 +3,6 @@ local M = {}
 M.plugin = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    "nvim-lua/lsp-status.nvim",
   },
   -- event = "VeryLazy",
   config = function()
@@ -12,70 +11,29 @@ M.plugin = {
 }
 
 M.setup = function()
-  local navic = require "nvim-navic"
-  local safe_require = require("rin.utils.safe_require")
-  local ok_lualine, lualine = safe_require("lualine")
-  local ok_lsp_status, lsp_status = safe_require("lsp-status")
-
-  if not (ok_lualine and ok_lsp_status) then
+  local ok = require("rin.utils.check_requires").check({
+    "lualine",
+  })
+  if not ok then
     return
   end
 
-  lsp_status.register_progress()
-  lsp_status.config({
-    status_symbol = "",
-    show_filename = true,
-    diagnostics = true,
-  })
-  local function get_relative_line_num(ctx_node_line_num)
-    local cursor_line_num = vim.fn.line "."
-    local num_folded_lines = 0
-
-    -- Find all folds between the context node and the cursor
-    local current_line = ctx_node_line_num
-    while current_line < cursor_line_num do
-      local fold_end = vim.fn.foldclosedend(current_line)
-      if fold_end == -1 then
-        current_line = current_line + 1
-      else
-        num_folded_lines = num_folded_lines + fold_end - current_line
-        current_line = fold_end + 1
-      end
-    end
-    return cursor_line_num - ctx_node_line_num - num_folded_lines
-  end
-
-  local function get_custom_location()
-    local data = navic.get_data() or {}
-    local context = {}
-    for _, d in ipairs(data) do
-      local line_num = d.scope["start"].line
-      if vim.o.relativenumber then
-        line_num = get_relative_line_num(line_num)
-      end
-      table.insert(context, d.name .. "[" .. line_num .. "]")
-    end
-    if vim.tbl_count(context) > 0 then
-      return " " ..">".. " " .. table.concat(context, " " ..">".. " ")
-    end
-    return ""
-  end
+  local lualine = require("lualine")
 
   local function LSP()
-    local msg = lsp_status.status()
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-    local clients = vim.lsp.get_active_clients()
+    local clients = vim.lsp.get_clients()
     if next(clients) == nil then
-      return msg
+      return ""
     end
     local lsp_clients = ""
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        lsp_clients = lsp_clients .. " " .. client.name .. " "
+        lsp_clients = lsp_clients .. client.name .. " "
       end
     end
-    return lsp_clients .. msg
+    return lsp_clients
   end
 
   local setup_winbar = {
@@ -91,62 +49,100 @@ M.setup = function()
     },
     sections = {
       lualine_a = {
+      },
+      lualine_b = {
+      },
+      lualine_c = {
         {
           "mode",
+          padding = 0,
+          separator = {
+            left = "",
+            right = "",
+          },
+          fmt = function(str) return "%#StatusLineModeIcon#  %*" .. "%#StatusLineModeText# " .. str .. " %*" end,
+        },
+        {
+          "branch",
+          icon = "",
+          padding = 0,
+          separator = {
+            left = "",
+            right = "",
+          },
+          fmt = function(str) return "%#StatusLineGitBranchIcon#  %*" .. "%#StatusLineGitBranchText# " .. (#str == 0 and "NO GIT" or str) .. " %*" end,
+        },
+        {
+          LSP,
+          icon = "",
+          padding = 0,
+          separator = {
+            left = "",
+            right = "",
+          },
+          fmt = function(str) return "%#StatusLineLspIcon# 󰛓 %*" ..
+                "%#StatusLineLspText# " .. (#str == 0 and "NO LSP" or str) .. " %*"
+          end,
+        },
+      },
+      lualine_x = {
+        {
+          "location",
+          icon = "",
+          padding = 0,
+          separator = {
+            left = "",
+            right = "",
+          },
+          fmt = function(str) return "%#StatusLineLocationIcon# 󰕅 %*" .. "%#StatusLineLocationText# " .. str .. " %*" end,
+        },
+      },
+      lualine_y = {
+      },
+      lualine_z = {
+      },
+    },
+    winbar = {
+      lualine_a = {
+      },
+      lualine_b = {
+      },
+      lualine_c = {
+        {
+          "filename",
+          path = 1,
+          symbols = {
+            modified = "",
+            readonly = "",
+            unnamed = "NO NAME",
+          },
+          padding = 0,
+          separator = {
+            left = "",
+            right = "",
+          },
+          fmt = function(str) return "%#StatusLineFilePathIcon#  %*" .. "%#StatusLineFilePathText# " .. str .. " %*" end,
+        },
+      },
+      lualine_x = {
+        {
+          function()
+            return " "
+          end,
+          padding = 0,
           separator = {
             left = "",
             right = "",
           },
         },
-      },
-      lualine_b = {
-        {
-          "branch",
-          icon = "שׂ",
-          separator = {
-            right = "",
-          },
-        },
-      },
-      lualine_c = {
-        {
-          LSP,
-          separator = "",
-        },
-      },
-      lualine_x = {
-        {
-          require("rin.personal.tab").statusline,
-          padding = 0,
-        },
-      },
-      lualine_y = {
-        "progress"
-      },
-      lualine_z = {
-        "location"
-      },
-    },
-    winbar = {
-      lualine_a = {
-        {
-          "filename",
-          path = 1,
-          symbols = {
-            modified = " 洛",
-            readonly = " ",
-            unnamed = "NO NAME",
-          },
-        },
-      },
-      lualine_b = {
-        get_custom_location,
-      },
-      lualine_x = {
         {
           "diagnostics",
-          always_visible = true,
-          separator = "",
+          always_visible = false,
+          padding = 1,
+          separator = {
+            left = "",
+            right = "",
+          },
         },
         {
           "diff",
@@ -155,7 +151,11 @@ M.setup = function()
             modified = " ",
             removed = " ",
           },
-          separator = "",
+          padding = 0,
+          separator = {
+            left = "",
+            right = "",
+          },
         },
         {
           "filetype",
@@ -172,10 +172,16 @@ M.setup = function()
           "filename",
           path = 1,
           symbols = {
-            modified = " 洛",
-            readonly = " ",
+            modified = "",
+            readonly = "",
             unnamed = "NO NAME",
           },
+          padding = 0,
+          separator = {
+            left = "",
+            right = "",
+          },
+          fmt = function(str) return "%#StatusLineFilePathIcon#  %*" .. "%#StatusLineFilePathText# " .. str .. " %*" end,
         },
       },
       lualine_b = {

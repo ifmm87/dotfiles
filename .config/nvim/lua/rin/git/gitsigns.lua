@@ -9,21 +9,23 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_gitsigns, gitsigns = safe_require("gitsigns")
-
-  if not ok_gitsigns then
+  local ok = require("rin.utils.check_requires").check({
+    "gitsigns",
+  })
+  if not ok then
     return
   end
 
+  local gitsigns = require("gitsigns")
+
   gitsigns.setup({
     signs                        = {
-      add          = { hl = "GitSignsAdd", text = "▍", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-      change       = { hl = "GitSignsChange", text = "▍", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-      delete       = { hl = "GitSignsDelete", text = "▍", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-      topdelete    = { hl = "GitSignsDelete", text = "▍", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-      changedelete = { hl = "GitSignsChange", text = "▍", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-      untracked    = { hl = "GitSignsAdd", text = "▍", numhl = "GitSignsAddLn", linehl = "GitSignsAddLn" },
+      add                        = { text = "▍" },
+      change                     = { text = "▍" },
+      delete                     = { text = "▍" },
+      topdelete                  = { text = "▍" },
+      changedelete               = { text = "▍" },
+      untracked                  = { text = "▍" },
     },
     signcolumn                   = true, -- Toggle with `:Gitsigns toggle_signs`
     numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -53,9 +55,6 @@ M.setup = function()
       relative = "cursor",
       row = 0,
       col = 1
-    },
-    yadm                         = {
-      enable = false
     },
     on_attach                    = function(bufnr)
       local gs = package.loaded.gitsigns

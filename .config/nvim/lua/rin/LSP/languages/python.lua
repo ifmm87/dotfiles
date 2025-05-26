@@ -53,13 +53,27 @@ lspconfig.pyright.setup({
 null_ls.register({
   name = "null-ls-Python",
   sources = {
-    null_ls.builtins.diagnostics.pydocstyle.with({
+    null_ls.builtins.diagnostics.pydoclint.with({
       filetypes = { "python" },
       extra_args = { "--config=$ROOT/setup.cfg" },
     }),
-    null_ls.builtins.formatting.autopep8.with({
+    null_ls.builtins.diagnostics.pylint.with({
       filetypes = { "python" },
     }),
   },
   on_attach = on_attach,
 })
+
+-- null_ls.register({
+--   name = "null-ls-Python",
+--   sources = {
+--     require("none-ls.diagnostics.pydocstyle").with({
+--       filetypes = { "python" },
+--       extra_args = { "--config=$ROOT/setup.cfg" },
+--     }),
+--     require("nole-ls.formatting.autopep8").with({
+--       filetypes = { "python" },
+--     }),
+--   },
+--   on_attach = on_attach,
+-- })
